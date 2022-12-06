@@ -1,0 +1,16 @@
+// @use "../../styles/partials/index" as *;
+@use "../../styles/partials/index" as *;
+@use "../../styles/partials/breakpoints" as breakpoints;
+
+.footer{
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  row-gap: 2.5rem;
+  padding: 5rem 3.5rem;
+  background-color: rgb(243 244 246 );
+  color: rgb(75 85 99);
+
+  @include breakpoints.medium {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
