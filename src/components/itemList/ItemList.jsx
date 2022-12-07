@@ -1,4 +1,4 @@
-import "./itemList.scss";
+import "./ItemList.scss";
 
 export const ItemList = ({ img, location, title, desc, price }) => {
 	return (

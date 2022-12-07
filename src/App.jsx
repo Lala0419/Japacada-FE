@@ -1,14 +1,18 @@
 // import { Routes, Route, Navigate } from "react-router-dom";
-import { Footer } from "./component/footer/Footer";
-import { Header } from "./component/header/Header";
-import { ItemList } from "./component/itemList/itemList";
+import { Footer } from "./components/footer/Footer";
+import { Header } from "./components/header/Header";
+import { ItemDetail } from "./components/itemDetail/ItemDetail";
+// import { ItemList } from "./components/itemList/ItemList";
+// import { SearchBar } from "./components/searchBar/SearchBar";
 
 function App() {
 	return (
 		<div className="main">
-			 <Header />
-			 <ItemList />
-{/*
+			<Header />
+			{/* <SearchBar />
+			<ItemList /> */}
+			<ItemDetail />
+			{/*
 			<div className="components">
 				<Routes>
 					<Route path="/" element={<Navigate to="/warehouse" />} />
