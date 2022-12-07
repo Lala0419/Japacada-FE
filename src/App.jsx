@@ -1,11 +1,14 @@
 // import { Routes, Route, Navigate } from "react-router-dom";
 import { Footer } from "./component/footer/Footer";
+import { Header } from "./component/header/Header";
+import { ItemList } from "./component/itemList/itemList";
 
 function App() {
 	return (
 		<div className="main">
-			{/* <Header />
-
+			 <Header />
+			 <ItemList />
+{/*
 			<div className="components">
 				<Routes>
 					<Route path="/" element={<Navigate to="/warehouse" />} />

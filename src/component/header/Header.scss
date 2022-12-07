@@ -1,0 +1,48 @@
+@use "../../styles/partials/index" as *;
+@use "../../styles/partials/breakpoints" as breakpoints;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  background-color: white;
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  padding: 1.25rem;
+
+  @include breakpoints.medium{
+    padding: 0 2.5rem;
+  }
+
+  &-left {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin: auto;
+    height: 4rem;
+
+    &_logo {
+      height: 3rem;
+    }
+
+    &_text {
+      padding-left: 1rem;
+        font-size: 1.5rem;
+        color: rgb(54, 106, 54);
+        font-weight: 700;
+    }
+  }
+
+  &-right {
+    display: flex;
+    align-items: center;
+    margin-right: calc(1rem * var(--tw-space-x-reverse));
+      margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+      justify-content: flex-end;
+      color: rgb(107 114 128);
+  }
+
+
+}
