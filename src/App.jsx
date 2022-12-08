@@ -1,7 +1,8 @@
 // import { Routes, Route, Navigate } from "react-router-dom";
 import { Footer } from "./components/footer/Footer";
 import { Header } from "./components/header/Header";
-import { ItemDetail } from "./components/itemDetail/ItemDetail";
+import { Profile } from "./pages/profile/Profile";
+// import { ItemDetail } from "./components/itemDetail/ItemDetail";
 // import { ItemList } from "./components/itemList/ItemList";
 // import { SearchBar } from "./components/searchBar/SearchBar";
 
@@ -9,9 +10,10 @@ function App() {
 	return (
 		<div className="main">
 			<Header />
+			<Profile />
 			{/* <SearchBar />
 			<ItemList /> */}
-			<ItemDetail />
+			{/* <ItemDetail /> */}
 			{/*
 			<div className="components">
 				<Routes>

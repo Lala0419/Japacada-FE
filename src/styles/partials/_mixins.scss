@@ -77,27 +77,27 @@
 
 //tablet padding
 
-@mixin tablet-padding-between-side {
-	padding: 0 3.6rem;
-}
+// @mixin tablet-padding-between-side {
+// 	padding: 0 3.6rem;
+// }
 
-//logo
+// //logo
 
-.logo {
-	background-color: $color-primary-dark;
-	max-width: 12rem;
-	max-height: 2rem;
-}
+// .logo {
+// 	background-color: $color-primary-dark;
+// 	max-width: 12rem;
+// 	max-height: 2rem;
+// }
 
-.social-icons {
-	background-color: $color-primary-dark;
-}
+// .social-icons {
+// 	background-color: $color-primary-dark;
+// }
 
-.nav-active:hover {
-	font-weight: 700;
-	color: $color-primary-light;
-	border-bottom: 2px solid $color-primary-light;
-}
+// .nav-active:hover {
+// 	font-weight: 700;
+// 	color: $color-primary-light;
+// 	border-bottom: 2px solid $color-primary-light;
+// }
 
 // form style
 
@@ -140,4 +140,25 @@
 }
 @mixin divide-border-bottom {
 	border-bottom: 1px solid $color-secondary-outline;
+}
+
+//button
+
+@mixin button {
+	padding: 0.8rem 1rem;
+	border: 2px solid grey;
+	border-radius: 9999px;
+	cursor: pointer;
+	transition: ease-out;
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	transition-duration: 150ms;
+
+	&:hover {
+		box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+			0 4px 6px -4px rgb(0 0 0 / 0.1);
+	}
+
+	&:active {
+		background-color: rgb(243 244 246);
+	}
 }

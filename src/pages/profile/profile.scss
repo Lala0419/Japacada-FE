@@ -1,0 +1,71 @@
+@use "../../styles/partials/index" as *;
+@use "../../styles/partials/breakpoints" as breakpoints;
+
+.profile {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0 auto;
+	height: 80vh;
+	background-color: rgb(192, 255, 192);
+
+	@include breakpoints.medium {
+	}
+
+	&-box {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		background-color: $color-primary-green;
+		height: 40vh;
+		padding: 5rem;
+		border-radius: 20px;
+
+		@include breakpoints.medium {
+			flex-direction: row;
+		}
+	}
+
+	&-left,
+	&-right {
+		@include breakpoints.medium {
+			width: 30vw;
+		}
+	}
+
+	&-left {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&-right {
+		padding-top: 2rem;
+		text-align: center;
+
+		@include breakpoints.medium {
+			text-align: left;
+		}
+	}
+
+	&-img {
+		width: 18rem;
+		height: 18rem;
+		align-self: center;
+		border-radius: 20px;
+	}
+
+	&-username {
+		font-size: 2rem;
+		padding-bottom: 1rem;
+
+		@include breakpoints.medium {
+			font-size: 3rem;
+		}
+	}
+
+	&-userinfo {
+		font-size: 1.25rem;
+		line-height: 1.5rem;
+	}
+}

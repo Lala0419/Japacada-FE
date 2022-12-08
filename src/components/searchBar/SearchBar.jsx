@@ -60,7 +60,7 @@ export const SearchBar = () => {
 		// 	query: {
 		// 		bedroom: noOfBeds,
 		// 		bathroom: noOfBaths,
-		// 		location: selectedOption,
+		// 		location: locations,
 		// 		calender: date.toISOString(),
 		// 	},
 		// });
@@ -68,76 +68,84 @@ export const SearchBar = () => {
 
 	return (
 		<>
-			<div className="md:grid md:grid-cols-5 p-4">
-				<div className="flex items-center border-b md:border-none pb-1 md-4 justify-between md:justify-center">
-					<h3 className="">Bedrooms</h3>
-					<div className="flex my-1">
-						<Bed className="ml-4" />
+			<div className="search-box">
+				<div className="search-item-box">
+					<h3 className="search-item-box_text">Bedrooms</h3>
+					<div className="search-item-box_icons">
+						<Bed fontSize="large" className="search-item-box_icons-icon" />
 						<input
 							value={noOfBeds}
 							onChange={(e) => setNoOfBeds(e.target.value)}
 							type="number"
 							min={1}
-							className=" w-10 pl-2 text-lg outline-none  ml-2 rounded bg-gray-100 "
+							className="search-item-box_icons-input"
 						/>
 					</div>
 				</div>
 
-				<div className="flex items-center border-b md:border-none pb-1 md-4 justify-between md:justify-center">
-					<h3 className="">Bathrooms</h3>
-					<div className="flex my-1">
-						<Bathroom className="ml-4" />
+				<div className="search-item-box">
+					<h3 className="search-item-box_text">Bathrooms</h3>
+					<div className="search-item-box_icons">
+						<Bathroom fontSize="large" className="search-item-box_icons-icon" />
 						<input
 							value={noOfBaths}
 							onChange={(e) => setNoOfBaths(e.target.value)}
 							type="number"
 							min={1}
-							className=" w-10 pl-2 text-lg outline-none bg-gray-100  ml-2 rounded"
+							className="search-item-box_icons-input"
 						/>
 					</div>
 				</div>
 
-				<div className="flex items-center border-b md:border-none pb-1 md-4 justify-between md:justify-center">
-					<h3 className="">Location</h3>
-					<div onClick={handleLocation} className="flex my-1">
-						<CompassCalibration className="ml-4" />
+				<div className="search-item-box">
+					<h3 className="search-item-box_text">Location</h3>
+					<div
+						onClick={handleLocation}
+						className="search-item-box_icons search-item-box_icons--location"
+					>
+						<CompassCalibration
+							fontSize="large"
+							className="search-item-box_icons-icon search-item-box_icons-icon--location"
+						/>
 					</div>
 				</div>
 
-				<div className="flex items-center border-b md:border-none pb-1 md-4 justify-between md:justify-center">
-					<h3 className="">Start Date</h3>
-					<div className="flex flex-col">
+				<div className="search-item-box">
+					<h3 className="search-item-box_text">Start Date</h3>
+					<div className="search-item-box_icons search-item-box_icons--calender">
 						<CalendarViewMonth
+							fontSize="large"
 							onClick={handleCalender}
-							className="m-1   bg-green-600 p-1 pl-2 pr-2  text-3xl rounded"
+							className="search-item-box_icons-icon"
 						/>
 					</div>
 				</div>
 
-				<div className="flex pt-4 md:p-2">
-					<button className="flex-grow ml-1 mr-1 text-gray-500 button">
+				<div className="search-button-box">
+					<button className="search-button search-button--cancel">
 						Cancel
 					</button>
 					<button
 						onClick={search}
-						className="flex-grow text-white ml-1 mr-1 bg-green-600 button"
+						className="search-button search-button--search"
 					>
 						Search
 					</button>
 				</div>
 			</div>
 			{isLocationClicked && (
-				<div className="flex justify-center">
+				<div className="search-location">
 					<AsyncSelect
 						defaultValue={selectedOption}
 						onChange={handleOption}
 						loadOptions={loadOptions}
+						defaultOptions
 						isMulti
 					/>
 				</div>
 			)}
 			{isCalenderIconClicked && (
-				<div className="flex justify-center">
+				<div className="search-calender">
 					<Calendar
 						date={date}
 						minDate={new Date()}

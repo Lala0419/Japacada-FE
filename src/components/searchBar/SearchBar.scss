@@ -1,2 +1,90 @@
 @use "../../styles/partials/index" as *;
 @use "../../styles/partials/breakpoints" as breakpoints;
+
+.search {
+	&-box {
+		padding: 1rem;
+		align-items: center;
+
+		@include breakpoints.medium {
+			display: grid;
+			grid-template-columns: repeat(5, minmax(0, 1fr));
+		}
+	}
+
+	&-item-box {
+		display: flex;
+		align-items: center;
+		border-bottom: 1px solid gray;
+		padding-bottom: 0.5rem;
+		justify-content: space-between;
+
+		@include breakpoints.medium {
+			border: none;
+			justify-content: center;
+		}
+
+		&_text {
+			font-size: 1.5rem;
+		}
+
+		&_icons {
+			display: flex;
+			margin: 0.5rem 0;
+			align-items: center;
+			margin-left: 1rem;
+
+			&--location,
+			&--calender {
+				border: 1px solid black;
+				border-radius: 20px;
+				padding: 0.5rem;
+				background-color: $color-primary-green;
+			}
+
+			&-icon {
+				width: 2rem;
+			}
+
+			&-input {
+				width: 3.2rem;
+				padding-left: 0.5rem;
+				font-size: 1.125rem;
+				line-height: 1.75rem;
+				outline: none;
+				margin-left: 0.5rem;
+				border-radius: 1rem;
+				background-color: rgb(243 244 246);
+			}
+		}
+	}
+
+	&-button {
+		&-box {
+			display: flex;
+			padding-top: 1rem;
+
+			@include breakpoints.medium {
+				padding: 0.5rem;
+			}
+		}
+
+		flex-grow: 1;
+		margin: 0 0.5rem;
+		@include button;
+
+		&--cancel {
+			color: $color-secondary-dark;
+		}
+		&--search {
+			color: $color-secondary-light;
+			background-color: $color-primary-green;
+		}
+	}
+
+	&-calender,
+	&-location {
+		display: flex;
+		justify-content: center;
+	}
+}
