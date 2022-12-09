@@ -1,15 +1,12 @@
-import {
-	Bathroom,
-	Bed,
-	CalendarViewMonth,
-	CompassCalibration,
-} from "@mui/icons-material";
+import { CalendarViewMonth, CompassCalibration } from "@mui/icons-material";
 import React, { useState } from "react";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import { Calendar } from "react-date-range";
 import AsyncSelect from "react-select/async";
 import "./SearchBar.scss";
+import { Link } from "react-router-dom";
+// import { useRouter } from "next/router";
 
 export const SearchBar = () => {
 	const [noOfBeds, setNoOfBeds] = useState(1);
@@ -30,6 +27,7 @@ export const SearchBar = () => {
 
 	const handleSelect = (date) => {
 		setDate(date);
+		console.log("date", date);
 	};
 
 	const options = [
@@ -55,6 +53,9 @@ export const SearchBar = () => {
 	};
 
 	const search = () => {
+		const locations = selectedOption?.map((i) => i.value).join(", ") || "";
+		console.log(locations);
+		console.log("selectedo", selectedOption);
 		// router.push({
 		// 	pathname: "/itemSearch",
 		// 	query: {
@@ -70,9 +71,7 @@ export const SearchBar = () => {
 		<>
 			<div className="search-box">
 				<div className="search-item-box">
-					<h3 className="search-item-box_text">Bedrooms</h3>
 					<div className="search-item-box_icons">
-						<Bed fontSize="large" className="search-item-box_icons-icon" />
 						<input
 							value={noOfBeds}
 							onChange={(e) => setNoOfBeds(e.target.value)}
@@ -80,13 +79,13 @@ export const SearchBar = () => {
 							min={1}
 							className="search-item-box_icons-input"
 						/>
+						<h3 className="search-item-box_text">Bedrooms</h3>
 					</div>
+					{/* <Bed fontSize="large" className="search-item-box_icons-icon" /> */}
 				</div>
 
 				<div className="search-item-box">
-					<h3 className="search-item-box_text">Bathrooms</h3>
 					<div className="search-item-box_icons">
-						<Bathroom fontSize="large" className="search-item-box_icons-icon" />
 						<input
 							value={noOfBaths}
 							onChange={(e) => setNoOfBaths(e.target.value)}
@@ -94,7 +93,9 @@ export const SearchBar = () => {
 							min={1}
 							className="search-item-box_icons-input"
 						/>
+						<h3 className="search-item-box_text">Bathrooms</h3>
 					</div>
+					{/* <Bathroom fontSize="large" className="search-item-box_icons-icon" /> */}
 				</div>
 
 				<div className="search-item-box">
@@ -114,6 +115,7 @@ export const SearchBar = () => {
 					<h3 className="search-item-box_text">Start Date</h3>
 					<div className="search-item-box_icons search-item-box_icons--calender">
 						<CalendarViewMonth
+							color="white"
 							fontSize="large"
 							onClick={handleCalender}
 							className="search-item-box_icons-icon"
@@ -125,12 +127,14 @@ export const SearchBar = () => {
 					<button className="search-button search-button--cancel">
 						Cancel
 					</button>
-					<button
-						onClick={search}
-						className="search-button search-button--search"
-					>
-						Search
-					</button>
+					<Link to="/search/result">
+						<button
+							onClick={search}
+							className="search-button search-button--search"
+						>
+							Search
+						</button>
+					</Link>
 				</div>
 			</div>
 			{isLocationClicked && (

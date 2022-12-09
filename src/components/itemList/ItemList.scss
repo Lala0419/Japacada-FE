@@ -11,6 +11,10 @@
 		cursor: pointer;
 		background-color: white;
 		transition: 3s ease-in-out;
+		color: $color-secondary-dark;
+		background-color: $color-primary-green;
+		border-radius: 20px;
+		margin: 1rem;
 
 		@include breakpoints.medium {
 			flex-direction: row;
@@ -45,6 +49,18 @@
 			height: 15rem;
 			width: 20rem;
 		}
+
+		&-img {
+			transform: scale(1.2);
+			border-radius: 1rem;
+			transition: 300ms ease-in;
+			object-fit: cover;
+			width: 100%;
+
+			&:hover {
+				transform: scale(1);
+			}
+		}
 	}
 
 	&-box3 {
@@ -66,6 +82,10 @@
 	&_title-text {
 		font-size: 1.25rem;
 		line-height: 1.75rem;
+
+		@include breakpoints.medium {
+			@include tablet-desk-text-section-header;
+		}
 	}
 
 	&-box4 {
@@ -75,6 +95,10 @@
 
 	&_location-text {
 		padding-top: 1rem;
+
+		@include breakpoints.medium {
+			@include tablet-desk-text-subheader;
+		}
 	}
 
 	&_desc-text {
@@ -83,6 +107,10 @@
 		line-height: 1.25rem;
 		font-weight: 500;
 		color: rgb(107 114 128);
+
+		@include breakpoints.medium {
+			@include tablet-desk-text-body;
+		}
 	}
 
 	&_price-box {
@@ -97,6 +125,10 @@
 		line-height: 1.75rem;
 		font-weight: 600;
 		padding-bottom: 0.5rem;
+
+		@include breakpoints.medium {
+			@include tablet-desk-text-subheader;
+		}
 
 		@include breakpoints.large {
 			font-size: 1.5rem;

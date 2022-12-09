@@ -1,20 +1,24 @@
-// import { Routes, Route, Navigate } from "react-router-dom";
-import { Footer } from "./components/footer/Footer";
-import { Header } from "./components/header/Header";
+import { Routes, Route } from "react-router-dom";
+import { Home } from "./pages/home/Home";
 import { Profile } from "./pages/profile/Profile";
-// import { ItemDetail } from "./components/itemDetail/ItemDetail";
-// import { ItemList } from "./components/itemList/ItemList";
-// import { SearchBar } from "./components/searchBar/SearchBar";
+import { ItemDetail } from "./components/itemDetail/ItemDetail";
+import { AddPost } from "./components/addPost/AddPost";
+import { FilteredList } from "./pages/filteredlist/FilteredList";
 
 function App() {
 	return (
-		<div className="main">
-			<Header />
-			<Profile />
-			{/* <SearchBar />
-			<ItemList /> */}
-			{/* <ItemDetail /> */}
-			{/*
+		<Routes>
+			<Route path="/" element={<Home />} />
+			{/* <Route path="/login" element={<Home />} />
+			<Route path="/signup" element={<Home />} /> */}
+			<Route path="/profile/:username" element={<Profile />} />
+			<Route path="/:postId" element={<ItemDetail />} />
+			<Route path="/newpost" element={<AddPost />} />
+			<Route path="/search/result" element={<FilteredList />} />
+		</Routes>
+	);
+
+	/*
 			<div className="components">
 				<Routes>
 					<Route path="/" element={<Navigate to="/warehouse" />} />
@@ -48,11 +52,10 @@ function App() {
 					/>
 				</Routes>{" "}
 				<ToastContainer />
-			</div> */}
-			{/* <div className="footer"> */}
-			<Footer />
-		</div>
-		// </div>
-	);
+			</div> */
+
+	/* <div className="footer"> */
+
+	// </div>
 }
 export default App;

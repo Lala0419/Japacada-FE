@@ -7,11 +7,12 @@
 	z-index: 50;
 	display: grid;
 	grid-template-columns: repeat(2, minmax(0, 1fr));
-	background-color: white;
+	background-color: rgb(255, 255, 255);
 	box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
 		var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 	padding: 1.25rem;
 	height: 10vh;
+	// background-color: $color-primary-green;
 
 	@include breakpoints.medium {
 		padding: 0 2.5rem;
@@ -24,6 +25,12 @@
 		cursor: pointer;
 		margin: auto;
 		height: 4rem;
+		width: 100%;
+
+		&-box {
+			display: flex;
+			align-items: center;
+		}
 
 		&_logo {
 			height: 3rem;
@@ -31,8 +38,8 @@
 
 		&_text {
 			padding-left: 1rem;
-			font-size: 1.5rem;
-			color: rgb(54, 106, 54);
+			font-size: 2rem;
+			color: $color-secondary-green;
 			font-weight: 700;
 		}
 	}
@@ -44,5 +51,37 @@
 		margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
 		justify-content: flex-end;
 		color: rgb(107 114 128);
+
+		&_text {
+			display: flex;
+			align-items: center;
+			margin-right: 1rem;
+			margin-left: 1rem;
+			justify-content: flex-end;
+			color: gray;
+			font-size: 1.5rem;
+		}
+
+		&_public-icon {
+			height: 1.25rem;
+			cursor: pointer;
+			margin-right: 0.5rem;
+			margin-left: 0.5rem;
+		}
+
+		&_icons {
+			display: flex;
+			align-items: center;
+			border: 2px solid $color-primary-inactive;
+			padding: 0.5rem;
+			border-radius: 9999px;
+			margin-right: 0.5rem;
+			margin-left: 0.5rem;
+			color: $color-secondary-dark;
+		}
+
+		&_icon {
+			height: 1.25rem;
+		}
 	}
 }

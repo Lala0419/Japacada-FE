@@ -1,16 +1,66 @@
-
 @use "../../styles/partials/index" as *;
 @use "../../styles/partials/breakpoints" as breakpoints;
 
-.footer{
-  display: grid;
-  grid-template-columns: repeat(1, minmax(0, 1fr));
-  row-gap: 2.5rem;
-  padding: 5rem 3.5rem;
-  background-color: rgb(243 244 246 );
-  color: rgb(75 85 99);
+.footer {
+	display: grid;
+	grid-template-columns: repeat(1, minmax(0, 1fr));
+	row-gap: 2.5rem;
+	color: rgb(75 85 99);
 
-  @include breakpoints.medium {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
+	@include breakpoints.medium {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+
+	&-all {
+		background-color: rgb(243 244 246);
+		padding: 3rem 3.5rem;
+	}
+
+	&-label {
+		margin-top: 2rem;
+		text-align: end;
+	}
+
+	&-box {
+		margin-top: 1rem;
+		margin-bottom: 1rem;
+		font-size: 1rem;
+		line-height: 1rem;
+		display: flex;
+
+		@include breakpoints.medium {
+			font-size: 2rem;
+		}
+	}
+
+	&-text {
+		&--contact {
+			margin-bottom: 2rem;
+		}
+	}
+
+	&-icon {
+		height: 1.25rem;
+		cursor: pointer;
+		color: rgb(54, 106, 54);
+		margin: 0 0.5rem;
+	}
+
+	&-contact {
+		display: flex;
+		flex-direction: column;
+
+		&-box {
+			margin-top: 1rem;
+			margin-bottom: 1rem;
+			font-size: 1rem;
+			line-height: 1rem;
+			display: flex;
+			align-items: center;
+
+			@include breakpoints.medium {
+				font-size: 1.5rem;
+			}
+		}
+	}
 }

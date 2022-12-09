@@ -1,0 +1,29 @@
+@use "../../styles/partials/index" as *;
+@use "../../styles/partials/breakpoints" as breakpoints;
+
+.search {
+	&-icon {
+		border-radius: 20px;
+		padding: 0.5rem;
+		margin: 1rem;
+		background-color: rgb(57, 169, 98);
+		display: inline-block;
+		@include breakpoints.medium {
+			display: none;
+		}
+	}
+
+	&-mobile {
+		@include breakpoints.medium {
+			display: none;
+		}
+	}
+
+	&-tablet {
+		display: none;
+
+		@include breakpoints.medium {
+			display: initial;
+		}
+	}
+}

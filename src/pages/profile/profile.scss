@@ -3,11 +3,12 @@
 
 .profile {
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	margin: 0 auto;
 	height: 80vh;
-	background-color: rgb(192, 255, 192);
+	background-color: rgb(246, 246, 246);
 
 	@include breakpoints.medium {
 	}
@@ -19,11 +20,13 @@
 		align-items: center;
 		background-color: $color-primary-green;
 		height: 40vh;
-		padding: 5rem;
 		border-radius: 20px;
+		margin-bottom: 5rem;
 
 		@include breakpoints.medium {
 			flex-direction: row;
+			padding-left: 0;
+			padding-right: 5rem;
 		}
 	}
 
@@ -67,5 +70,16 @@
 	&-userinfo {
 		font-size: 1.25rem;
 		line-height: 1.5rem;
+	}
+
+	&-button {
+		font-size: 1.5rem;
+		padding: 1rem;
+		border-radius: 20px;
+		color: white;
+		background-color: $color-primary-green;
+		@include button;
+		border: none;
+		margin: 5rem;
 	}
 }

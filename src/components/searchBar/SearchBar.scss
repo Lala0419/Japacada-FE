@@ -36,7 +36,6 @@
 
 			&--location,
 			&--calender {
-				border: 1px solid black;
 				border-radius: 20px;
 				padding: 0.5rem;
 				background-color: $color-primary-green;
@@ -44,6 +43,9 @@
 
 			&-icon {
 				width: 2rem;
+				border-radius: 20px;
+				padding: 0.5rem;
+				background-color: $color-primary-green;
 			}
 
 			&-input {
@@ -52,7 +54,7 @@
 				font-size: 1.125rem;
 				line-height: 1.75rem;
 				outline: none;
-				margin-left: 0.5rem;
+				margin-right: 0.5rem;
 				border-radius: 1rem;
 				background-color: rgb(243 244 246);
 			}

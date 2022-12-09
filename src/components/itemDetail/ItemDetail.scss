@@ -21,6 +21,7 @@
 		width: 45vw;
 		&_title {
 			font-size: 2rem;
+			margin: 2rem 0;
 
 			@include breakpoints.medium {
 				font-size: 3rem;
@@ -34,6 +35,23 @@
 				width: 45vw;
 			}
 		}
+
+		&-icons {
+			display: flex;
+			padding-bottom: 1rem;
+		}
+
+		&-icon {
+			margin-right: 2rem;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+		}
+
+		&-num {
+			font-size: 2rem;
+			margin-right: 1rem;
+		}
 	}
 
 	&-right {
@@ -44,11 +62,23 @@
 
 		@include breakpoints.medium {
 			padding-left: 2rem;
+			margin-top: 8rem;
+		}
+
+		&-top-top {
+			display: flex;
+			align-items: center;
+			margin-bottom: 1rem;
+		}
+
+		&-img {
+			width: 5rem;
+			height: 5rem;
 		}
 
 		&_username {
 			font-size: 1.5rem;
-			padding: 1rem 0;
+			padding: 1rem;
 
 			@include breakpoints.medium {
 				font-size: 2rem;
@@ -58,11 +88,13 @@
 		&_desc {
 			font-size: 1.5rem;
 			line-height: 1.75rem;
+			margin-bottom: 2rem;
 		}
 
 		&-bottom {
 			display: flex;
 			justify-content: flex-end;
+			align-items: center;
 
 			&_button {
 				font-size: 1.5rem;
@@ -70,12 +102,13 @@
 				margin: 0 1rem;
 				border-radius: 20px;
 				color: white;
+				@include button;
 
 				&--message {
-					background-color: rgb(75, 75, 186);
+					background-color: $color-secondary-blue;
 				}
 				&--back {
-					background-color: rgb(54, 106, 54);
+					background-color: $color-secondary-green;
 				}
 			}
 		}
