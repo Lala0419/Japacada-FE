@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import APT1 from "../../assets/apt/apt1.jpeg";
 import profileImg from "../../assets/person/1.jpeg";
 import "./ItemDetail.scss";
 import { useParams } from "react-router-dom";
@@ -23,6 +22,17 @@ export const ItemDetail = () => {
 			setItemDetail(data.post);
 			setUser(data.user);
 			// console.log("item", itemDetail);
+			// console.log("itemDetailimg", itemDetail.img);
+
+			// const imgs = itemDetail.img;
+
+			// if (imgs > 0) {
+			// 	imgs.map((img) => {
+			// 		return setImg(img[0]);
+			// 	});
+			// } else {
+			// 	setImg(imgs);
+			// }
 		};
 		if (postId !== "") {
 			fetchItemDetail();
@@ -34,6 +44,16 @@ export const ItemDetail = () => {
 			? setPostId(params.postId)
 			: setPostId("638d41f5e94cfc5e412b56cc");
 	}, [params.postId]);
+
+	// const imgs = itemDetail.img;
+
+	// if (imgs.length > 1) {
+	// 	imgs.map((img) => {
+	// 		return setImg(img[0]);
+	// 	});
+	// } else {
+	// 	return setImg(imgs);
+	// }
 
 	return (
 		<>
@@ -59,7 +79,11 @@ export const ItemDetail = () => {
 							</span>
 						</div>
 					</div>
-					<img className="detail-box-left_head-img" src={APT1} alt="apt" />
+					<img
+						className="detail-box-left_head-img"
+						src={itemDetail.img}
+						alt="apt"
+					/>
 				</div>
 				<div className="detail-box-right">
 					<div className="detail-box-right-top">
@@ -69,9 +93,7 @@ export const ItemDetail = () => {
 								src={profileImg}
 								alt="profile"
 							/>
-							<h2 className="detail-box-right_username">
-								Tarou /{user.username}
-							</h2>
+							<h2 className="detail-box-right_username">{user.username}</h2>
 						</div>
 						<p className="detail-box-right_desc">{itemDetail.desc}</p>
 					</div>

@@ -18,7 +18,9 @@
 	}
 
 	&-left {
-		width: 45vw;
+		@include breakpoints.medium {
+			width: 45vw;
+		}
 		&_title {
 			font-size: 2rem;
 			margin: 2rem 0;

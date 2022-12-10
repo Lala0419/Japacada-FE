@@ -6,12 +6,15 @@ import { Header } from "../../components/header/Header";
 import { ItemList } from "../../components/itemList/ItemList";
 import { SearchBar } from "../../components/searchBar/SearchBar";
 import "./Home.scss";
+import { format } from "date-fns";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:8080";
 
-export const Home = () => {
+export const Home = ({ setFilter }) => {
 	const [isSearchClick, setIsSearchClick] = useState(false);
 	const [posts, setPosts] = useState([]);
+
+	const formattedDate = format(new Date(filter.calender), "dd MMMM yyyy");
 
 	const handleSearchBar = () => {
 		setIsSearchClick((prev) => !prev);
@@ -34,11 +37,11 @@ export const Home = () => {
 			</div>
 			{isSearchClick && (
 				<div className="search-mobile">
-					<SearchBar />
+					<SearchBar setFilter={setFilter} posts={posts} setPosts={setPosts} />
 				</div>
 			)}
 			<div className="search-tablet">
-				<SearchBar />
+				<SearchBar setFilter={setFilter} posts={posts} setPosts={setPosts} />
 			</div>
 			<ItemList posts={posts} />
 

@@ -5,10 +5,10 @@ import "react-date-range/dist/theme/default.css";
 import { Calendar } from "react-date-range";
 import AsyncSelect from "react-select/async";
 import "./SearchBar.scss";
-import { Link } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 // import { useRouter } from "next/router";
 
-export const SearchBar = () => {
+export const SearchBar = ({ posts, setPosts, setFilter }) => {
 	const [noOfBeds, setNoOfBeds] = useState(1);
 	const [noOfBaths, setNoOfBaths] = useState(1);
 	const [date, setDate] = useState(new Date());
@@ -16,7 +16,7 @@ export const SearchBar = () => {
 	const [isCalenderIconClicked, setIsCalenderIconClicked] = useState(false);
 	const [isLocationClicked, setIsLocationClicked] = useState(false);
 
-	// const router = useRouter();
+	// const navigate = useNavigate();
 
 	const handleCalender = () => {
 		setIsCalenderIconClicked((prev) => !prev);
@@ -52,19 +52,36 @@ export const SearchBar = () => {
 		}, 2000);
 	};
 
-	const search = () => {
+	const search = async () => {
+		setPosts(posts);
 		const locations = selectedOption?.map((i) => i.value).join(", ") || "";
 		console.log(locations);
-		console.log("selectedo", selectedOption);
-		// router.push({
-		// 	pathname: "/itemSearch",
-		// 	query: {
-		// 		bedroom: noOfBeds,
-		// 		bathroom: noOfBaths,
-		// 		location: locations,
-		// 		calender: date.toISOString(),
-		// 	},
-		// });
+		console.log("selectedOption", selectedOption);
+
+		setFilter({
+			bedroom: noOfBeds,
+			bathroom: noOfBaths,
+			location: locations,
+			calender: date.toISOString(),
+		});
+
+		console.log("post", posts);
+		console.log("location", locations);
+
+		const searchResult = posts.filter((post) => {
+			return (
+				post.bedroom === noOfBeds && post.bathroom === noOfBaths
+				// post.location === "Vancouver"
+			);
+		});
+
+		setPosts(searchResult);
+		setIsCalenderIconClicked(false);
+		setIsLocationClicked(false);
+
+		console.log("serchresult", searchResult);
+
+		// navigate("/search/result");
 	};
 
 	return (
@@ -127,14 +144,12 @@ export const SearchBar = () => {
 					<button className="search-button search-button--cancel">
 						Cancel
 					</button>
-					<Link to="/search/result">
-						<button
-							onClick={search}
-							className="search-button search-button--search"
-						>
-							Search
-						</button>
-					</Link>
+					<button
+						onClick={search}
+						className="search-button search-button--search"
+					>
+						Search
+					</button>
 				</div>
 			</div>
 			{isLocationClicked && (
