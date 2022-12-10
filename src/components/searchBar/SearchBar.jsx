@@ -5,8 +5,7 @@ import "react-date-range/dist/theme/default.css";
 import { Calendar } from "react-date-range";
 import AsyncSelect from "react-select/async";
 import "./SearchBar.scss";
-// import { useNavigate } from "react-router-dom";
-// import { useRouter } from "next/router";
+import { useNavigate } from "react-router-dom";
 
 export const SearchBar = ({ posts, setPosts, setFilter }) => {
 	const [noOfBeds, setNoOfBeds] = useState(1);
@@ -16,7 +15,7 @@ export const SearchBar = ({ posts, setPosts, setFilter }) => {
 	const [isCalenderIconClicked, setIsCalenderIconClicked] = useState(false);
 	const [isLocationClicked, setIsLocationClicked] = useState(false);
 
-	// const navigate = useNavigate();
+	const navigate = useNavigate();
 
 	const handleCalender = () => {
 		setIsCalenderIconClicked((prev) => !prev);
@@ -81,7 +80,7 @@ export const SearchBar = ({ posts, setPosts, setFilter }) => {
 
 		console.log("serchresult", searchResult);
 
-		// navigate("/search/result");
+		navigate("/search/result");
 	};
 
 	return (
