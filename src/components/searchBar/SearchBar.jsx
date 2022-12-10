@@ -5,7 +5,7 @@ import "react-date-range/dist/theme/default.css";
 import { Calendar } from "react-date-range";
 import AsyncSelect from "react-select/async";
 import "./SearchBar.scss";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const SearchBar = ({ posts, setPosts, setFilter }) => {
 	const [noOfBeds, setNoOfBeds] = useState(1);
@@ -52,7 +52,7 @@ export const SearchBar = ({ posts, setPosts, setFilter }) => {
 	};
 
 	const search = async () => {
-		setPosts(posts);
+		navigate("/search/result");
 		const locations = selectedOption?.map((i) => i.value).join(", ") || "";
 		console.log(locations);
 		console.log("selectedOption", selectedOption);
@@ -79,8 +79,6 @@ export const SearchBar = ({ posts, setPosts, setFilter }) => {
 		setIsLocationClicked(false);
 
 		console.log("serchresult", searchResult);
-
-		navigate("/search/result");
 	};
 
 	return (
@@ -143,12 +141,14 @@ export const SearchBar = ({ posts, setPosts, setFilter }) => {
 					<button className="search-button search-button--cancel">
 						Cancel
 					</button>
-					<button
-						onClick={search}
-						className="search-button search-button--search"
-					>
-						Search
-					</button>
+					<Link to="search/result">
+						<button
+							onClick={search}
+							className="search-button search-button--search"
+						>
+							Search
+						</button>
+					</Link>
 				</div>
 			</div>
 			{isLocationClicked && (

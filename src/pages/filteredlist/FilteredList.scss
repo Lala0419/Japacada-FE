@@ -1,0 +1,28 @@
+@use "../../styles/partials/index" as *;
+@use "../../styles/partials/breakpoints" as breakpoints;
+
+.fList {
+	display: flex;
+
+	&-box {
+		flex-grow: 1;
+		padding: 3.25rem 1.25rem 0;
+		margin: 0 2rem;
+	}
+
+	&-text {
+		@include mobile-text-subheader-footer;
+
+		@include breakpoints.medium {
+			@include tablet-desk-text-subheader;
+		}
+	}
+
+	&-location {
+		@include mobile-text-section-header;
+
+		@include breakpoints.medium {
+			@include tablet-desk-text-page-header;
+		}
+	}
+}
