@@ -17,7 +17,10 @@ export const FilteredList = ({ filter }) => {
 
 	const fetchPosts = useCallback(async () => {
 		const { data } = await axios.get(`${BASE_URL}/api/posts/timeline/all`);
-		setPosts(data);
+		console.log("data", data);
+		const searchResult = data.filter((item) => item.bedroom === filter.bedroom);
+
+		setPosts(searchResult);
 	}, []);
 
 	useEffect(() => {
@@ -36,7 +39,7 @@ export const FilteredList = ({ filter }) => {
 					<h1 className="fList-location">in {filter.location}</h1>
 				</section>
 			</main>
-			<ItemList posts={posts} filter={filter} />
+			<ItemList posts={posts} />
 			<Footer />
 		</div>
 	);

@@ -2,7 +2,7 @@ import "./ItemList.scss";
 import { Link } from "react-router-dom";
 // import APT2 from "../../assets/apt/apt2.webp";
 
-export const ItemList = ({ posts, filter }) => {
+export const ItemList = ({ posts }) => {
 	return (
 		<>
 			{posts &&
