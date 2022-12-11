@@ -21,10 +21,7 @@ function App() {
 				<Route path="/profile/:username" element={<Profile />} />
 				<Route path="/:postId" element={<ItemDetail />} />
 				<Route path="/newpost" element={<AddPost />} />
-				<Route
-					path="/search/result"
-					element={<FilteredList filter={filter} />}
-				/>
+				<Route path="/result" element={<FilteredList filter={filter} />} />
 			</Routes>
 			<Footer />
 		</>

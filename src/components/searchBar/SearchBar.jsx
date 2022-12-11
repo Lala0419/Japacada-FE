@@ -52,7 +52,7 @@ export const SearchBar = ({ posts, setPosts, setFilter }) => {
 	};
 
 	const search = async () => {
-		navigate("/search/result");
+		navigate("/result");
 		const locations = selectedOption?.map((i) => i.value).join(", ") || "";
 		console.log(locations);
 		console.log("selectedOption", selectedOption);
@@ -70,6 +70,8 @@ export const SearchBar = ({ posts, setPosts, setFilter }) => {
 		const searchResult = posts.filter((post) => {
 			return post.bedroom === noOfBeds && post.bathroom === noOfBaths;
 		});
+
+		//TODO add func for location and calender
 
 		setPosts(searchResult);
 		setIsCalenderIconClicked(false);
@@ -137,7 +139,7 @@ export const SearchBar = ({ posts, setPosts, setFilter }) => {
 					<button className="search-button search-button--cancel">
 						Cancel
 					</button>
-					<Link to="search/result">
+					<Link to="/result">
 						<button
 							onClick={search}
 							className="search-button search-button--search"
