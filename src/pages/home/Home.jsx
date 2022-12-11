@@ -1,8 +1,6 @@
 import { FilterAltRounded } from "@mui/icons-material";
 import axios from "axios";
 import { useState, useCallback, useEffect } from "react";
-import { Footer } from "../../components/footer/Footer";
-import { Header } from "../../components/header/Header";
 import { ItemList } from "../../components/itemList/ItemList";
 import { SearchBar } from "../../components/searchBar/SearchBar";
 import "./Home.scss";
@@ -28,7 +26,6 @@ export const Home = ({ setFilter }) => {
 
 	return (
 		<div className="main">
-			<Header />
 			<div className="search-icon" onClick={handleSearchBar}>
 				<FilterAltRounded fontSize="large" />
 			</div>
@@ -41,8 +38,6 @@ export const Home = ({ setFilter }) => {
 				<SearchBar setFilter={setFilter} posts={posts} setPosts={setPosts} />
 			</div>
 			<ItemList posts={posts} />
-
-			<Footer />
 		</div>
 	);
 };

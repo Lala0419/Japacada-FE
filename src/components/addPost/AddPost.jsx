@@ -1,6 +1,237 @@
-import React from "react";
+import "./AddPost.scss";
+import React, { useState } from "react";
+import Thumbnail from "../../assets/images/upload-thumnail-placeholder.jpeg";
+import Publish from "../../assets/images/publish.svg";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { Uploader } from "uploader";
+import { UploadButton } from "react-uploader";
+
 import "./AddPost.scss";
 
 export const AddPost = () => {
-	return <div>AddPost</div>;
+	const [title, setTitle] = useState("");
+	const [desc, setDesc] = useState("");
+	const [bedroom, setBedroom] = useState("");
+	const [bathroom, setBathroom] = useState("");
+	const [price, setPrice] = useState("");
+	const [calender, setCalender] = useState("");
+	const [location, setLocation] = useState("");
+	const [img, setImg] = useState("");
+	const [post, setPost] = useState(null);
+	const [hasErrorMessage, setHasErrorMessage] = useState(false);
+
+	const navigate = useNavigate();
+
+	const [posts, setPosts] = useState([]);
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+
+		if (
+			!title ||
+			!desc ||
+			!img ||
+			!bathroom ||
+			!bedroom ||
+			!price ||
+			!calender ||
+			!location
+		) {
+			setHasErrorMessage(true);
+			setTimeout(() => {
+				setHasErrorMessage(false);
+			}, 2000);
+		} else {
+			setHasErrorMessage(false);
+			setPost({
+				title,
+				desc,
+				img,
+			});
+
+			axios
+				.post(`http://localhost:8080/posts/`, {
+					title: title,
+					desc: desc,
+					img: img,
+				})
+				.then((response) => {
+					setPosts([...posts, response.data]);
+				});
+		}
+	};
+
+	const uploader = Uploader({
+		apiKey: "free",
+	});
+
+	const options = { multi: true };
+
+	return (
+		<>
+			<section className="upload">
+				<div className="upload__top">
+					<h1 className="upload__top-title">New Post</h1>
+				</div>
+				<div className="upload__middle">
+					<div className="upload__middle-img-container">
+						<img
+							src={img ? img : Thumbnail}
+							alt="bycle"
+							className="upload__middle-img"
+						/>
+						<div className="upload__middle-button">
+							<UploadButton
+								uploader={uploader} // Required.
+								options={options} // Optional.
+								onComplete={(files) => {
+									// Optional.
+									if (files.length === 0) {
+										console.log("No files selected.");
+									} else {
+										setImg(files[0].fileUrl);
+									}
+								}}
+							>
+								{({ onClick }) => (
+									<button onClick={onClick}>Upload a file...</button>
+								)}
+							</UploadButton>
+						</div>
+					</div>
+					<div className="upload__middle-disc-box">
+						<form onSubmit={handleSubmit} className="upload__middle-form">
+							<div className="upload__middle-list-container">
+								<div className="upload__middle-list">
+									<label htmlFor="name" className="upload__middle-form-label">
+										title your post
+									</label>
+									<input
+										type="text"
+										placeholder="Add a title to your post"
+										className="upload__middle-form-input"
+										id="name"
+										value={title}
+										onChange={(e) => setTitle(e.target.value)}
+									/>
+								</div>
+								<div className="upload__middle-list">
+									<label htmlFor="name" className="upload__middle-form-label">
+										price
+									</label>
+									<input
+										type="text"
+										placeholder="Add a price"
+										className="upload__middle-form-input"
+										id="price"
+										value={price}
+										onChange={(e) => setPrice(e.target.value)}
+									/>
+								</div>
+								<div className="upload__middle-list">
+									<label htmlFor="name" className="upload__middle-form-label">
+										bedroom(s)
+									</label>
+									<input
+										type="text"
+										placeholder="Add a # of bedroom(s)"
+										className="upload__middle-form-input"
+										id="bedroom"
+										value={bedroom}
+										onChange={(e) => setBedroom(e.target.value)}
+									/>
+								</div>
+								<div className="upload__middle-list">
+									<label htmlFor="name" className="upload__middle-form-label">
+										bathroom(s)
+									</label>
+									<input
+										type="text"
+										placeholder="Add a # of bathroom(s)"
+										className="upload__middle-form-input"
+										id="bathroom"
+										value={bathroom}
+										onChange={(e) => setBathroom(e.target.value)}
+									/>
+								</div>
+								<div className="upload__middle-list">
+									<label htmlFor="name" className="upload__middle-form-label">
+										location
+									</label>
+									<input
+										type="text"
+										placeholder="pick a location"
+										className="upload__middle-form-input"
+										id="location"
+										value={location}
+										onChange={(e) => setLocation(e.target.value)}
+									/>
+									<div
+										onClick={handleLocation}
+										className="search-item-box_icons search-item-box_icons--location"
+									>
+										<CompassCalibration
+											fontSize="large"
+											className="search-item-box_icons-icon search-item-box_icons-icon--location"
+										/>
+									</div>
+								</div>
+								<div className="upload__middle-list">
+									<label htmlFor="name" className="upload__middle-form-label">
+										calender
+									</label>
+									<input
+										type="text"
+										placeholder="starting available date"
+										className="upload__middle-form-input"
+										id="calender"
+										value={calender}
+										onChange={(e) => setCalender(e.target.value)}
+									/>
+								</div>
+								<div className="upload__middle-list">
+									<label
+										htmlFor="comment"
+										className="upload__middle-form-label"
+									>
+										description
+									</label>
+									<textarea
+										id="desc"
+										name="desc"
+										placeholder="Add a description to your post"
+										className="upload__middle-form-input upload__middle-form-input--comment"
+										minLength="5"
+										maxLength="500"
+										value={desc}
+										onChange={(e) => setDesc(e.target.value)}
+									></textarea>
+								</div>
+							</div>
+							{hasErrorMessage && (
+								<p className="text__error">This field can not be empty!</p>
+							)}
+							<div className="upload__bottom">
+								<button id="comment__button" className="upload__bottom-button">
+									PUBLISH
+									<img
+										className="upload__bottom-publish"
+										src={Publish}
+										alt="publish"
+									/>
+								</button>
+
+								<h2 className="upload__bottom-cancel">
+									<Link to="/home" className="upload__bottom-cancel-link">
+										CANCEL
+									</Link>
+								</h2>
+							</div>
+						</form>
+					</div>
+				</div>
+			</section>
+		</>
+	);
 };

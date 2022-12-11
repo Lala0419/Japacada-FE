@@ -68,10 +68,7 @@ export const SearchBar = ({ posts, setPosts, setFilter }) => {
 		console.log("location", locations);
 
 		const searchResult = posts.filter((post) => {
-			return (
-				post.bedroom === noOfBeds && post.bathroom === noOfBaths
-				// post.location === "Vancouver"
-			);
+			return post.bedroom === noOfBeds && post.bathroom === noOfBaths;
 		});
 
 		setPosts(searchResult);
@@ -95,7 +92,6 @@ export const SearchBar = ({ posts, setPosts, setFilter }) => {
 						/>
 						<h3 className="search-item-box_text">Bedrooms</h3>
 					</div>
-					{/* <Bed fontSize="large" className="search-item-box_icons-icon" /> */}
 				</div>
 
 				<div className="search-item-box">

@@ -1,10 +1,9 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { format } from "date-fns";
-import { Header } from "../../components/header/Header";
-import { Footer } from "../../components/footer/Footer";
 import { ItemList } from "../../components/itemList/ItemList";
 import axios from "axios";
 import "./FilteredList.scss";
+import { SearchBar } from "../../components/searchBar/SearchBar";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:8080";
 
@@ -13,12 +12,16 @@ export const FilteredList = ({ filter }) => {
 	const formattedDate = format(new Date(filter.calender), "dd MMMM yyyy");
 
 	console.log(formattedDate);
-	console.log("filter", filter);
+	console.log("filterConditions", filter);
 
 	const fetchPosts = useCallback(async () => {
 		const { data } = await axios.get(`${BASE_URL}/api/posts/timeline/all`);
-		console.log("data", data);
-		const searchResult = data.filter((item) => item.bedroom === filter.bedroom);
+		// console.log("data", data);
+		const searchResult = data.filter(
+			(item) =>
+				item.bedroom === filter.bedroom && item.bathroom === filter.bathroom
+		);
+		console.log("searchResult", searchResult);
 
 		setPosts(searchResult);
 	}, []);
@@ -27,9 +30,13 @@ export const FilteredList = ({ filter }) => {
 		fetchPosts();
 	}, [fetchPosts]);
 
+	// const handleOption = (selectedOptions) => {
+	// 	console.log("handleOption", selectedOptions);
+	// };
+
 	return (
 		<div>
-			<Header />
+			{/* <SearchBar handleOption={handleOption} /> */}
 			<main className="fList">
 				<section className="fList-box">
 					<p className="fList-text">
@@ -40,7 +47,6 @@ export const FilteredList = ({ filter }) => {
 				</section>
 			</main>
 			<ItemList posts={posts} />
-			<Footer />
 		</div>
 	);
 };
