@@ -205,14 +205,25 @@
 		}
 	}
 
+	&__location-calender-box {
+		display: flex;
+	}
+
 	&__location-box {
 		align-items: flex-start;
+		width: 50%;
 	}
 
 	&-location {
 		color: $color-secondary-dark;
 		width: 20rem;
 		text-align: start;
+	}
+
+	&__calender-box {
+		align-items: start;
+		justify-content: flex-start;
+		width: 50%;
 	}
 }
 

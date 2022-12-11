@@ -7,8 +7,9 @@ import axios from "axios";
 import { Uploader } from "uploader";
 import { UploadButton } from "react-uploader";
 import "./AddPost.scss";
-import { CompassCalibration } from "@mui/icons-material";
+import { CalendarViewMonth, CompassCalibration } from "@mui/icons-material";
 import AsyncSelect from "react-select/async";
+import { Calendar } from "react-date-range";
 
 export const AddPost = () => {
 	const [title, setTitle] = useState("");
@@ -23,14 +24,21 @@ export const AddPost = () => {
 	const [hasErrorMessage, setHasErrorMessage] = useState(false);
 	const [selectedOption, setSelectedOption] = useState(null);
 	const [isLocationClicked, setIsLocationClicked] = useState(false);
+	const [isCalenderIconClicked, setIsCalenderIconClicked] = useState(false);
+	const [date, setDate] = useState(new Date());
 
 	const navigate = useNavigate();
 
 	const [posts, setPosts] = useState([]);
 
-	// const handleLocation = () => {
-	// 	setIsLocationClicked((prev) => !prev);
-	// };
+	const handleCalender = () => {
+		setIsCalenderIconClicked((prev) => !prev);
+	};
+
+	const handleSelect = (date) => {
+		setDate(date);
+		console.log("date", date);
+	};
 
 	const options = [
 		{ value: "vancouver", label: "Vancouver" },
@@ -183,11 +191,12 @@ export const AddPost = () => {
 										onChange={(e) => setBathroom(e.target.value)}
 									/>
 								</div>
-								<div className="upload__middle-list upload__location-box">
-									<label htmlFor="name" className="upload__middle-form-label">
-										location
-									</label>
-									{/* <input
+								<div className="upload__location-calender-box">
+									<div className="upload__middle-list upload__location-box">
+										<label htmlFor="name" className="upload__middle-form-label">
+											location
+										</label>
+										{/* <input
 										type="text"
 										placeholder="pick a location"
 										className="upload__middle-form-input"
@@ -195,7 +204,7 @@ export const AddPost = () => {
 										value={location}
 										onChange={(e) => setLocation(e.target.value)}
 									/> */}
-									{/* <div
+										{/* <div
 										onClick={handleLocation}
 										className="search-item-box_icons search-item-box_icons--location"
 									>
@@ -205,28 +214,48 @@ export const AddPost = () => {
 										/>
 									</div> */}
 
-									<div className="upload-location">
-										<AsyncSelect
-											defaultValue={selectedOption}
-											onChange={handleOption}
-											loadOptions={loadOptions}
-											defaultOptions
-										/>
+										<div className="upload-location">
+											<AsyncSelect
+												defaultValue={selectedOption}
+												onChange={handleOption}
+												loadOptions={loadOptions}
+												defaultOptions
+											/>
+										</div>
 									</div>
-								</div>
-								<div className="upload__middle-list">
-									<label htmlFor="name" className="upload__middle-form-label">
-										calender
-									</label>
-									<input
+									<div className="upload__middle-list upload__calender-box">
+										<label htmlFor="name" className="upload__middle-form-label">
+											calender
+										</label>
+										<div className="search-item-box_icons search-item-box_icons--calender">
+											<CalendarViewMonth
+												color="white"
+												fontSize="large"
+												onClick={handleCalender}
+												className="search-item-box_icons-icon"
+											/>
+										</div>
+
+										{/* <input
 										type="text"
 										placeholder="starting available date"
 										className="upload__middle-form-input"
 										id="calender"
 										value={calender}
 										onChange={(e) => setCalender(e.target.value)}
-									/>
+									/> */}
+									</div>
 								</div>
+								{isCalenderIconClicked && (
+									<div className="search-calender">
+										<Calendar
+											date={date}
+											minDate={new Date()}
+											onChange={handleSelect}
+											dateDisplayFormat={date}
+										/>
+									</div>
+								)}
 								<div className="upload__middle-list">
 									<label
 										htmlFor="comment"
