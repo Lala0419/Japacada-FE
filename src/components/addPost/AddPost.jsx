@@ -97,7 +97,7 @@ export const AddPost = () => {
 
 			axios
 				.post(`http://localhost:8000/api/posts/`, {
-					userId: "6393ce2c809300431409fc54",
+					userId: "6393ceef809300431409fc5e",
 					title,
 					desc,
 					img,
@@ -110,8 +110,8 @@ export const AddPost = () => {
 				.then((response) => {
 					setPosts(posts, response.data);
 				});
+			navigate("/");
 		}
-		navigate("/");
 	};
 
 	const uploader = Uploader({
@@ -283,7 +283,6 @@ export const AddPost = () => {
 										placeholder="Add a description to your post"
 										className="upload__middle-form-input upload__middle-form-input--comment"
 										minLength="5"
-										maxLength="500"
 										value={desc}
 										onChange={(e) => setDesc(e.target.value)}
 									></textarea>

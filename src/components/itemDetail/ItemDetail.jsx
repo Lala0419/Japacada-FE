@@ -6,6 +6,8 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Bathroom, Bed } from "@mui/icons-material";
+import { Header } from "../../components/header/Header";
+import { Footer } from "../../components/footer/Footer";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:8080";
 
@@ -21,18 +23,6 @@ export const ItemDetail = () => {
 			console.log("data", data);
 			setItemDetail(data.post);
 			setUser(data.user);
-			// console.log("item", itemDetail);
-			// console.log("itemDetailimg", itemDetail.img);
-
-			// const imgs = itemDetail.img;
-
-			// if (imgs > 0) {
-			// 	imgs.map((img) => {
-			// 		return setImg(img[0]);
-			// 	});
-			// } else {
-			// 	setImg(imgs);
-			// }
 		};
 		if (postId !== "") {
 			fetchItemDetail();
@@ -57,6 +47,7 @@ export const ItemDetail = () => {
 
 	return (
 		<>
+			<Header />
 			<div className="detail-box" key={itemDetail._id}>
 				<div className="detail-box-left">
 					<div className="detail-box-left-top">
@@ -109,6 +100,7 @@ export const ItemDetail = () => {
 					</div>
 				</div>
 			</div>
+			<Footer />
 		</>
 	);
 };

@@ -3,6 +3,8 @@ import axios from "axios";
 import { useState, useCallback, useEffect } from "react";
 import { ItemList } from "../../components/itemList/ItemList";
 import { SearchBar } from "../../components/searchBar/SearchBar";
+import { Header } from "../../components/header/Header";
+import { Footer } from "../../components/footer/Footer";
 import "./Home.scss";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:8080";
@@ -25,19 +27,27 @@ export const Home = ({ setFilter }) => {
 	}, [fetchPosts]);
 
 	return (
-		<div className="main">
-			<div className="search-icon" onClick={handleSearchBar}>
-				<FilterAltRounded fontSize="large" />
-			</div>
-			{isSearchClick && (
-				<div className="search-mobile">
+		<>
+			<Header />
+			<div className="main">
+				<div className="search-icon" onClick={handleSearchBar}>
+					<FilterAltRounded fontSize="large" />
+				</div>
+				{isSearchClick && (
+					<div className="search-mobile">
+						<SearchBar
+							setFilter={setFilter}
+							posts={posts}
+							setPosts={setPosts}
+						/>
+					</div>
+				)}
+				<div className="search-tablet">
 					<SearchBar setFilter={setFilter} posts={posts} setPosts={setPosts} />
 				</div>
-			)}
-			<div className="search-tablet">
-				<SearchBar setFilter={setFilter} posts={posts} setPosts={setPosts} />
+				<ItemList posts={posts} />
 			</div>
-			<ItemList posts={posts} />
-		</div>
+			<Footer />
+		</>
 	);
 };

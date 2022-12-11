@@ -123,8 +123,7 @@
 				height: 8rem;
 				font-family: inherit;
 				font-weight: 500;
-				resize: none;
-
+				resize: vertical;
 				@include breakpoints.medium {
 					height: 10rem;
 				}
