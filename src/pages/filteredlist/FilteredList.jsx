@@ -3,12 +3,13 @@ import { format } from "date-fns";
 import { ItemList } from "../../components/itemList/ItemList";
 import axios from "axios";
 import "./FilteredList.scss";
-import { SearchBar } from "../../components/searchBar/SearchBar";
+import { Link } from "react-router-dom";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:8080";
 
 export const FilteredList = ({ filter }) => {
 	const [posts, setPosts] = useState([]);
+	const [result, setResult] = useState(false);
 	const formattedDate = format(new Date(filter.calender), "dd MMMM yyyy");
 
 	console.log(formattedDate);
@@ -16,7 +17,7 @@ export const FilteredList = ({ filter }) => {
 
 	const fetchPosts = useCallback(async () => {
 		const { data } = await axios.get(`${BASE_URL}/api/posts/timeline/all`);
-		// console.log("data", data);
+
 		const searchResult = data.filter(
 			(item) =>
 				item.bedroom === filter.bedroom && item.bathroom === filter.bathroom
@@ -30,23 +31,33 @@ export const FilteredList = ({ filter }) => {
 		fetchPosts();
 	}, [fetchPosts]);
 
-	// const handleOption = (selectedOptions) => {
-	// 	console.log("handleOption", selectedOptions);
-	// };
+	console.log("result", result);
 
 	return (
 		<div>
-			{/* <SearchBar handleOption={handleOption} /> */}
-			<main className="fList">
-				<section className="fList-box">
-					<p className="fList-text">
-						300+ places for {filter.bedroom} bedroom, {filter.bathroom} bathroom
-						open from {formattedDate}
-					</p>
-					<h1 className="fList-location">in {filter.location}</h1>
-				</section>
-			</main>
+			{result ? (
+				<dev className="fList">
+					<section className="fList-box">
+						<p className="fList-text">
+							300+ places for {filter.bedroom} bedroom, {filter.bathroom}{" "}
+							bathroom open from {formattedDate}
+						</p>
+						<h1 className="fList-location">in {filter.location}</h1>
+					</section>
+				</dev>
+			) : (
+				<div className="fList-box">
+					<h1 className="fList-location">No post was found </h1>
+				</div>
+			)}
 			<ItemList posts={posts} />
+			<Link to="/">
+				<div className="fList-button">
+					<span className="detail-box-right-bottom_button detail-box-right-bottom_button--back ">
+						HOME
+					</span>
+				</div>
+			</Link>
 		</div>
 	);
 };

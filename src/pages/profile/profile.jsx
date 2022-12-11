@@ -1,13 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import UserImg from "../../assets/person/10.jpeg";
-import { Footer } from "../../components/footer/Footer";
-import { Header } from "../../components/header/Header";
 import "./Profile.scss";
+
 export const Profile = () => {
 	return (
 		<>
-			<Header />
 			<div className="profile">
 				<div className="profile-box">
 					<div className="profile-left">
@@ -31,7 +29,6 @@ export const Profile = () => {
 					<span className="profile-button">go back to list</span>
 				</Link>
 			</div>
-			<Footer />
 		</>
 	);
 };

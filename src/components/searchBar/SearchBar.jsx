@@ -8,8 +8,8 @@ import "./SearchBar.scss";
 import { Link, useNavigate } from "react-router-dom";
 
 export const SearchBar = ({ posts, setPosts, setFilter }) => {
-	const [noOfBeds, setNoOfBeds] = useState(1);
-	const [noOfBaths, setNoOfBaths] = useState(1);
+	const [noOfBeds, setNoOfBeds] = useState("1");
+	const [noOfBaths, setNoOfBaths] = useState("1");
 	const [date, setDate] = useState(new Date());
 	const [selectedOption, setSelectedOption] = useState(null);
 	const [isCalenderIconClicked, setIsCalenderIconClicked] = useState(false);

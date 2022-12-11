@@ -10,6 +10,7 @@ import "./AddPost.scss";
 import { CalendarViewMonth, CompassCalibration } from "@mui/icons-material";
 import AsyncSelect from "react-select/async";
 import { Calendar } from "react-date-range";
+import { format } from "date-fns";
 
 export const AddPost = () => {
 	const [title, setTitle] = useState("");
@@ -39,6 +40,9 @@ export const AddPost = () => {
 		setDate(date);
 		console.log("date", date);
 	};
+
+	const formattedDate = format(new Date(date), "dd MMMM yyyy");
+	// console.log(formattedDate);
 
 	const options = [
 		{ value: "vancouver", label: "Vancouver" },
@@ -80,29 +84,39 @@ export const AddPost = () => {
 			}, 2000);
 		} else {
 			setHasErrorMessage(false);
-			setPost({
+			setPosts({
 				title,
 				desc,
 				img,
+				bathroom,
+				bedroom,
+				price,
+				location: selectedOption.value,
+				calender: formattedDate,
 			});
 
 			axios
-				.post(`http://localhost:8080/posts/`, {
-					title: title,
-					desc: desc,
-					img: img,
+				.post(`http://localhost:8000/api/posts/`, {
+					userId: "6393ce2c809300431409fc54",
+					title,
+					desc,
+					img,
+					bathroom,
+					bedroom,
+					price,
+					location: selectedOption.value,
+					calender: formattedDate,
 				})
 				.then((response) => {
-					setPosts([...posts, response.data]);
+					setPosts(posts, response.data);
 				});
 		}
+		navigate("/");
 	};
 
 	const uploader = Uploader({
 		apiKey: "free",
 	});
-
-	// const options = { multi: true };
 
 	return (
 		<>

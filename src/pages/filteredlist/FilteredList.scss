@@ -18,11 +18,22 @@
 		}
 	}
 
+	// &-no-found {
+	// 	padding: 0 1.25rem;
+	// 	margin: 0 2rem;
+	// }
+
 	&-location {
 		@include mobile-text-section-header;
 
 		@include breakpoints.medium {
 			@include tablet-desk-text-page-header;
 		}
+	}
+
+	&-button {
+		margin: 4rem;
+		text-align: center;
+		padding: 0 1.25rem;
 	}
 }
