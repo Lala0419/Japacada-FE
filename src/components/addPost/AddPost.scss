@@ -204,6 +204,16 @@
 			}
 		}
 	}
+
+	&__location-box {
+		align-items: flex-start;
+	}
+
+	&-location {
+		color: $color-secondary-dark;
+		width: 20rem;
+		text-align: start;
+	}
 }
 
 .text__error {

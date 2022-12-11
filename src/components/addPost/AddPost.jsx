@@ -6,8 +6,9 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Uploader } from "uploader";
 import { UploadButton } from "react-uploader";
-
 import "./AddPost.scss";
+import { CompassCalibration } from "@mui/icons-material";
+import AsyncSelect from "react-select/async";
 
 export const AddPost = () => {
 	const [title, setTitle] = useState("");
@@ -20,10 +21,38 @@ export const AddPost = () => {
 	const [img, setImg] = useState("");
 	const [post, setPost] = useState(null);
 	const [hasErrorMessage, setHasErrorMessage] = useState(false);
+	const [selectedOption, setSelectedOption] = useState(null);
+	const [isLocationClicked, setIsLocationClicked] = useState(false);
 
 	const navigate = useNavigate();
 
 	const [posts, setPosts] = useState([]);
+
+	// const handleLocation = () => {
+	// 	setIsLocationClicked((prev) => !prev);
+	// };
+
+	const options = [
+		{ value: "vancouver", label: "Vancouver" },
+		{ value: "richmond", label: "Richmond" },
+		{ value: "burnaby", label: "Burnaby" },
+		{ value: "surrey", label: "Surrey" },
+	];
+
+	const handleOption = (selectedOptions) => {
+		console.log("selectedOption", selectedOptions);
+		setSelectedOption(selectedOptions);
+	};
+
+	const loadOptions = (searchValue, callback) => {
+		setTimeout(() => {
+			const filteredOptions = options.filter((option) =>
+				option.label.toLowerCase().includes(searchValue.toLowerCase())
+			);
+			console.log("loadOptions", searchValue, filteredOptions);
+			callback(filteredOptions);
+		}, 2000);
+	};
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -35,8 +64,7 @@ export const AddPost = () => {
 			!bathroom ||
 			!bedroom ||
 			!price ||
-			!calender ||
-			!location
+			!selectedOption
 		) {
 			setHasErrorMessage(true);
 			setTimeout(() => {
@@ -66,7 +94,7 @@ export const AddPost = () => {
 		apiKey: "free",
 	});
 
-	const options = { multi: true };
+	// const options = { multi: true };
 
 	return (
 		<>
@@ -155,25 +183,34 @@ export const AddPost = () => {
 										onChange={(e) => setBathroom(e.target.value)}
 									/>
 								</div>
-								<div className="upload__middle-list">
+								<div className="upload__middle-list upload__location-box">
 									<label htmlFor="name" className="upload__middle-form-label">
 										location
 									</label>
-									<input
+									{/* <input
 										type="text"
 										placeholder="pick a location"
 										className="upload__middle-form-input"
 										id="location"
 										value={location}
 										onChange={(e) => setLocation(e.target.value)}
-									/>
-									<div
+									/> */}
+									{/* <div
 										onClick={handleLocation}
 										className="search-item-box_icons search-item-box_icons--location"
 									>
 										<CompassCalibration
 											fontSize="large"
 											className="search-item-box_icons-icon search-item-box_icons-icon--location"
+										/>
+									</div> */}
+
+									<div className="upload-location">
+										<AsyncSelect
+											defaultValue={selectedOption}
+											onChange={handleOption}
+											loadOptions={loadOptions}
+											defaultOptions
 										/>
 									</div>
 								</div>
