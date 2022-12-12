@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Login.scss";
 
 export const Login = () => {
@@ -25,11 +26,15 @@ export const Login = () => {
 						className="login-right-input"
 						placeholder="パスワード"
 					/>
-					<button className="login-right-button">ログイン</button>
+					<Link to="/home" className="login-right-button-link">
+						<button className="login-right-button">ログイン</button>
+					</Link>
 					<span className="login-rightforgot">パスワードを忘れた方へ</span>
-					<button className="login-right-button login-right-register-button">
-						アカウント作成
-					</button>
+					<Link to="/signUp" className="login-right-button-link">
+						<button className="login-right-button login-right-register-button">
+							アカウント作成
+						</button>
+					</Link>
 				</div>
 			</div>
 		</div>

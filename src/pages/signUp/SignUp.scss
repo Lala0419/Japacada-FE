@@ -138,6 +138,7 @@
 			border: none;
 			border-radius: 10px;
 			height: 35px;
+			width: 100%;
 			@include mobile-text-labels-buttons;
 
 			&:hover {
@@ -147,8 +148,6 @@
 
 			@include breakpoints.medium {
 				padding: 0 3.2rem;
-
-				width: auto;
 				@include tablet-desk-text-labels-buttons;
 				order: 2;
 			}
