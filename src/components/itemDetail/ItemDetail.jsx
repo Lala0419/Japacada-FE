@@ -53,21 +53,33 @@ export const ItemDetail = () => {
 					<div className="detail-box-left-top">
 						<h1 className="detail-box-left_title">{itemDetail.title}</h1>
 						<div className="detail-box-left-icons">
-							<span className="detail-box-left-icon">
-								<span className="detail-box-left-num">
-									{itemDetail.bedroom}
+							<div className="detail-box-left-left-box">
+								<span className="detail-box-left-icon">
+									<span className="detail-box-left-num">
+										{itemDetail.bedroom}
+									</span>
+									<Bed fontSize="large" className="detail-box-left-icon-icon" />
 								</span>
-								<Bed fontSize="large" className="detail-box-left-icon-icon" />
-							</span>
-							<span className="detail-box-left-icon">
-								<span className="detail-box-left-num">
-									{itemDetail.bathroom}
+								<span className="detail-box-left-icon">
+									<span className="detail-box-left-num">
+										{itemDetail.bathroom}
+									</span>
+									<Bathroom
+										fontSize="large"
+										className="detail-box-left-icon-icon"
+									/>
 								</span>
-								<Bathroom
-									fontSize="large"
-									className="detail-box-left-icon-icon"
-								/>
-							</span>
+							</div>
+							<div className="detail-box-left-right-box">
+								<span className="detail-box-left-icon">
+									<span className="detail-box-left-num">
+										Move in Avail from
+									</span>
+									<span className=" detail-box-left-num detail-box-left-num--bold">
+										{itemDetail.calender}
+									</span>
+								</span>
+							</div>
 						</div>
 					</div>
 					<img

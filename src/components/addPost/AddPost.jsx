@@ -239,7 +239,7 @@ export const AddPost = () => {
 									</div>
 									<div className="upload__middle-list upload__calender-box">
 										<label htmlFor="name" className="upload__middle-form-label">
-											calender
+											move in avail date
 										</label>
 										<div className="search-item-box_icons search-item-box_icons--calender">
 											<CalendarViewMonth

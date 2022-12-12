@@ -6,6 +6,7 @@ import { AddPost } from "./components/addPost/AddPost";
 import { FilteredList } from "./pages/filteredlist/FilteredList";
 import { useState } from "react";
 import { Login } from "./pages/login/Login";
+import { SignUp } from "./pages/signUp/SignUp";
 
 function App() {
 	const [filter, setFilter] = useState();
@@ -15,7 +16,7 @@ function App() {
 				<Route path="/" element={<Navigate to="/home" />} />
 				<Route path="/home" element={<Home setFilter={setFilter} />} />
 				<Route path="/login" element={<Login />} />
-				{/* <Route path="/signup" element={<Home />} /> */}
+				<Route path="/signup" element={<SignUp />} />
 				<Route path="/profile/:username" element={<Profile />} />
 				<Route path="/:postId" element={<ItemDetail />} />
 				<Route path="/newpost" element={<AddPost filter={filter} />} />

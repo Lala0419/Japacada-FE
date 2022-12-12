@@ -1,0 +1,161 @@
+@use "../../styles/partials/index" as *;
+@use "../../styles/partials/breakpoints" as breakpoints;
+
+.login {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+
+	background-image: url(../../assets/images/login-background1.jpeg);
+	width: 100vw;
+	height: 100vh;
+
+	@include breakpoints.medium {
+		flex-direction: row;
+	}
+
+	&-left,
+	&-right {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	&-left {
+		text-align: center;
+		height: 100vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		@include breakpoints.medium {
+			background-color: aliceblue;
+		}
+
+		&-inside-box {
+			border-radius: 50%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			background-color: rgb(255, 115, 115);
+			width: 20rem;
+			height: 20rem;
+
+			@include breakpoints.medium {
+				width: 30rem;
+				height: 30rem;
+			}
+			@include breakpoints.large {
+				width: 50rem;
+				height: 50rem;
+			}
+		}
+
+		&-logo {
+			@include tablet-desk-text-section-header;
+			color: $color-secondary-green;
+
+			@include breakpoints.medium {
+				@include tablet-desk-text-page-header;
+			}
+		}
+
+		&-message {
+			padding-top: 1rem;
+			@include mobile-text-page-header;
+
+			@include breakpoints.medium {
+				@include tablet-desk-text-page-header;
+			}
+		}
+
+		&-messagej {
+			@include mobile-text-section-header;
+
+			@include breakpoints.medium {
+				@include tablet-desk-text-page-header;
+			}
+		}
+		&-messagesub {
+			padding-top: 1rem;
+			@include mobile-text-body-footer;
+
+			@include breakpoints.medium {
+				@include tablet-desk-text-body;
+			}
+		}
+	}
+
+	&-right {
+		margin: 4rem;
+
+		&-signup-box {
+			width: 40rem;
+			margin: auto;
+			height: 30rem;
+			padding: 20px;
+			background-color: aliceblue;
+			border-radius: 20px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			@include mobile-text-body-footer;
+
+			@include breakpoints.medium {
+				width: 30rem;
+				@include tablet-desk-text-body;
+			}
+			@include breakpoints.large {
+				width: 50rem;
+				@include tablet-desk-text-body;
+			}
+		}
+
+		&-input {
+			height: 30px;
+			border-radius: 10px;
+			border: 1px solid gray;
+			font-size: 12px;
+			padding-left: 20px;
+			cursor: pointer;
+
+			&:focus {
+				outline: none;
+				border: 2px solid $color-primary-green;
+			}
+
+			&:hover {
+				border: 2px solid $color-secondary-green;
+			}
+		}
+
+		&-button {
+			@include button;
+			background-color: $color-secondary-green;
+			color: $color-primary-light;
+			border: none;
+			border-radius: 10px;
+			height: 35px;
+			@include mobile-text-labels-buttons;
+
+			&:hover {
+				background-color: $color-primary-green;
+				cursor: pointer;
+			}
+
+			@include breakpoints.medium {
+				padding: 0 3.2rem;
+
+				width: auto;
+				@include tablet-desk-text-labels-buttons;
+				order: 2;
+			}
+
+			@include breakpoints.large {
+				padding: 0 5.5rem;
+			}
+		}
+	}
+}
