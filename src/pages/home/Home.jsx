@@ -8,10 +8,11 @@ import { Footer } from "../../components/footer/Footer";
 import "./Home.scss";
 import { AddPost } from "../../components/addPost/AddPost";
 import { Profile } from "../profile/Profile";
+import "../../components/modal/Modal.scss";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:8080";
 
-export const Home = ({ setFilter, modal, setModal, modalp, setModalp }) => {
+export const Home = ({ setFilter, modalp, setModalp }) => {
 	const [isSearchClick, setIsSearchClick] = useState(false);
 	const [posts, setPosts] = useState([]);
 
@@ -28,30 +29,11 @@ export const Home = ({ setFilter, modal, setModal, modalp, setModalp }) => {
 		fetchPosts();
 	}, [fetchPosts]);
 
-	if (modal) {
-		document.body.classList.add("active-modal");
-	} else {
-		document.body.classList.remove("active-modal");
-	}
-
-	if (modalp) {
-		document.body.classList.add("active-modal");
-	} else {
-		document.body.classList.remove("active-modal");
-	}
-
 	return (
 		<>
-			{modal && <AddPost modal={modal} setModal={setModal} />}
-
 			{modalp && <Profile modalp={modalp} setModalp={setModalp} />}
 
-			<Header
-				modal={modal}
-				setModal={setModal}
-				modalp={modalp}
-				setModalp={setModalp}
-			/>
+			<Header modalp={modalp} setModalp={setModalp} />
 			<div className="main">
 				<div className="search-icon" onClick={handleSearchBar}>
 					<FilterAltRounded fontSize="large" />

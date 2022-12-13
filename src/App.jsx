@@ -10,8 +10,8 @@ import { SignUp } from "./pages/signUp/SignUp";
 
 function App() {
 	const [filter, setFilter] = useState();
-	const [modal, setModal] = useState(false);
 	const [modalp, setModalp] = useState(false);
+
 	return (
 		<>
 			<Routes>
@@ -19,13 +19,7 @@ function App() {
 				<Route
 					path="/home"
 					element={
-						<Home
-							setFilter={setFilter}
-							modal={modal}
-							modalp={modalp}
-							setModal={setModal}
-							setModalp={setModalp}
-						/>
+						<Home setFilter={setFilter} modalp={modalp} setModalp={setModalp} />
 					}
 				/>
 				<Route path="/login" element={<Login />} />
@@ -38,9 +32,7 @@ function App() {
 					element={
 						<FilteredList
 							filter={filter}
-							modal={modal}
 							modalp={modalp}
-							setModal={setModal}
 							setModalp={setModalp}
 						/>
 					}

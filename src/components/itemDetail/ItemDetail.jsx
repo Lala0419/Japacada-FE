@@ -47,7 +47,6 @@ export const ItemDetail = () => {
 
 	return (
 		<>
-			<Header />
 			<div className="detail-box" key={itemDetail._id}>
 				<div className="detail-box-left">
 					<div className="detail-box-left-top">
@@ -112,7 +111,6 @@ export const ItemDetail = () => {
 					</div>
 				</div>
 			</div>
-			<Footer />
 		</>
 	);
 };
