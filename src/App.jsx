@@ -10,17 +10,41 @@ import { SignUp } from "./pages/signUp/SignUp";
 
 function App() {
 	const [filter, setFilter] = useState();
+	const [modal, setModal] = useState(false);
+	const [modalp, setModalp] = useState(false);
 	return (
 		<>
 			<Routes>
 				<Route path="/" element={<Navigate to="/home" />} />
-				<Route path="/home" element={<Home setFilter={setFilter} />} />
+				<Route
+					path="/home"
+					element={
+						<Home
+							setFilter={setFilter}
+							modal={modal}
+							modalp={modalp}
+							setModal={setModal}
+							setModalp={setModalp}
+						/>
+					}
+				/>
 				<Route path="/login" element={<Login />} />
 				<Route path="/signup" element={<SignUp />} />
 				<Route path="/profile/:username" element={<Profile />} />
 				<Route path="/:postId" element={<ItemDetail />} />
 				<Route path="/newpost" element={<AddPost filter={filter} />} />
-				<Route path="/result" element={<FilteredList filter={filter} />} />
+				<Route
+					path="/result"
+					element={
+						<FilteredList
+							filter={filter}
+							modal={modal}
+							modalp={modalp}
+							setModal={setModal}
+							setModalp={setModalp}
+						/>
+					}
+				/>
 			</Routes>
 		</>
 	);

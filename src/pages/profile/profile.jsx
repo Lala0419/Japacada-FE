@@ -16,8 +16,9 @@ export const Profile = ({ modalp, setModalp }) => {
 	}
 
 	return (
-		<>
-			<div className="profile">
+		<div className="modal">
+			<div className="overlay" onClick={toggleModalp}></div>
+			<div className="profile modal-content">
 				<div className="profile-box">
 					<div className="profile-left">
 						<img src={UserImg} alt="user-img" className="profile-img" />
@@ -42,6 +43,6 @@ export const Profile = ({ modalp, setModalp }) => {
 				</span>
 				{/* </Link> */}
 			</div>
-		</>
+		</div>
 	);
 };

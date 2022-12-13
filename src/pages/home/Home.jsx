@@ -11,7 +11,7 @@ import { Profile } from "../profile/Profile";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:8080";
 
-export const Home = ({ setFilter }) => {
+export const Home = ({ setFilter, modal, setModal, modalp, setModalp }) => {
 	const [isSearchClick, setIsSearchClick] = useState(false);
 	const [posts, setPosts] = useState([]);
 
@@ -27,9 +27,6 @@ export const Home = ({ setFilter }) => {
 	useEffect(() => {
 		fetchPosts();
 	}, [fetchPosts]);
-
-	const [modal, setModal] = useState(false);
-	const [modalp, setModalp] = useState(false);
 
 	if (modal) {
 		document.body.classList.add("active-modal");

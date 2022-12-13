@@ -127,7 +127,7 @@ export const AddPost = ({ modal, setModal }) => {
 
 	return (
 		<div className="modal">
-			<div className="overlay"></div>
+			<div className="overlay" onClick={toggleModal}></div>
 			<div className="modal-content">
 				<section className="upload">
 					<div className="upload__top">
