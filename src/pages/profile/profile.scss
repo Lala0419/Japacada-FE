@@ -7,10 +7,11 @@
 	justify-content: center;
 	align-items: center;
 	margin: 0 auto;
-	height: 80vh;
 	background-color: rgb(255, 251, 251);
+	border-radius: 20px;
 
 	@include breakpoints.medium {
+		padding: 4rem;
 	}
 
 	&-box {
@@ -18,22 +19,35 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		background-color: $color-primary-green;
-		height: 40vh;
 		border-radius: 20px;
-		margin-bottom: 5rem;
+		max-width: 60vw;
+		// margin-bottom: 5rem;
+		// padding-top: 2rem 1rem;
+
+		@include breakpoints.medium {
+			// flex-direction: row;
+			// padding: 5rem;
+			// padding-left: 0;
+			// padding-right: 5rem;
+		}
+	}
+
+	&-top {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		width: 100%;
 
 		@include breakpoints.medium {
 			flex-direction: row;
-			padding-left: 0;
-			padding-right: 5rem;
+			align-items: center;
 		}
 	}
 
 	&-left,
 	&-right {
 		@include breakpoints.medium {
-			width: 30vw;
+			width: 35vw;
 		}
 	}
 
@@ -47,6 +61,7 @@
 		text-align: center;
 
 		@include breakpoints.medium {
+			padding-top: 0;
 			text-align: left;
 		}
 	}
@@ -55,7 +70,8 @@
 		width: 18rem;
 		height: 18rem;
 		align-self: center;
-		border-radius: 20px;
+		border-radius: 50%;
+		object-fit: cover;
 	}
 
 	&-username {
@@ -70,16 +86,63 @@
 	&-userinfo {
 		font-size: 1.25rem;
 		line-height: 1.5rem;
+
+		&-label {
+			color: $color-primary-inactive;
+			font-weight: 700;
+			@include label-padding;
+			padding-top: 2rem;
+			@include mobile-text-labels-buttons;
+			text-align: left;
+			width: 100%;
+
+			@include breakpoints.medium {
+				@include tablet-desk-text-labels-buttons;
+			}
+		}
+		&-text {
+			@include mobile-form-styles;
+
+			&:focus {
+				@include form-field-border--active;
+			}
+		}
+	}
+
+	&-bottom {
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		align-items: center;
+
+		@include breakpoints.medium {
+			padding-top: 2rem;
+		}
+	}
+
+	&-aboutme {
+		text-align: left;
+		display: inline-block;
+		font-size: 1rem;
+
+		@include breakpoints.medium {
+			font-size: 18px;
+		}
 	}
 
 	&-button {
 		font-size: 1.5rem;
-		padding: 1rem;
 		border-radius: 20px;
 		color: white;
 		background-color: $color-primary-green;
 		@include button;
+		padding: 1rem 2rem;
 		border: none;
-		margin: 5rem;
+		margin-top: 3rem;
+		text-align: center;
+		width: fit-content;
+
+		@include breakpoints.medium {
+		}
 	}
 }

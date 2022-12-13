@@ -6,18 +6,11 @@ import "./FilteredList.scss";
 import { Link } from "react-router-dom";
 import { Header } from "../../components/header/Header";
 import { Footer } from "../../components/footer/Footer";
-import { AddPost } from "../../components/addPost/AddPost";
 import { Profile } from "../profile/Profile";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:8080";
 
-export const FilteredList = ({
-	filter,
-	modal,
-	setModal,
-	modalp,
-	setModalp,
-}) => {
+export const FilteredList = ({ filter, modalp, setModalp }) => {
 	const [posts, setPosts] = useState([]);
 	const [result, setResult] = useState(true);
 	const formattedDate = format(new Date(filter.calender), "dd MMMM yyyy");
@@ -42,31 +35,13 @@ export const FilteredList = ({
 		fetchPosts();
 	}, []);
 
-	if (modal) {
-		document.body.classList.add("active-modal");
-	} else {
-		document.body.classList.remove("active-modal");
-	}
-
-	if (modalp) {
-		document.body.classList.add("active-modal");
-	} else {
-		document.body.classList.remove("active-modal");
-	}
-
 	console.log("result", result);
 
 	return (
 		<div>
-			{modal && <AddPost modal={modal} setModal={setModal} />}
-
 			{modalp && <Profile modalp={modalp} setModalp={setModalp} />}
-			<Header
-				modal={modal}
-				setModal={setModal}
-				modalp={modalp}
-				setModalp={setModalp}
-			/>
+
+			<Header modalp={modalp} setModalp={setModalp} />
 			{result ? (
 				<dev className="fList">
 					<section className="fList-box">

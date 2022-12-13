@@ -1,13 +1,11 @@
 import { AccountCircle, Menu, Public } from "@mui/icons-material";
 import "./Header.scss";
 import HeaderIcon from "../../assets/person/1.jpeg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "../modal/Modal.scss";
 
 export const Header = ({ modalp, setModalp }) => {
-	// const router = useRouter();
-
 	const toggleModalp = () => {
 		setModalp(!modalp);
 	};

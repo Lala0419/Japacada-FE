@@ -11,7 +11,7 @@ import { Footer } from "../../components/footer/Footer";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:8080";
 
-export const ItemDetail = ({ modalD, setModalD }) => {
+export const ItemDetail = () => {
 	const params = useParams();
 	const [postId, setPostId] = useState("");
 	const [itemDetail, setItemDetail] = useState([]);
@@ -45,10 +45,6 @@ export const ItemDetail = ({ modalD, setModalD }) => {
 	// 	return setImg(imgs);
 	// }
 
-	const toggleModalD = () => {
-		setModalD(!modalD);
-	};
-
 	// if (modalD) {
 	// 	document.body.classList.add("active-modal");
 	// } else {
@@ -56,9 +52,9 @@ export const ItemDetail = ({ modalD, setModalD }) => {
 	// }
 
 	return (
-		<div className="modal">
-			<div className="overlay" onClick={toggleModalD}></div>
-			<div className="detail-box detail modal-content" key={itemDetail._id}>
+		<div className="detail-all">
+			<Header />
+			<div className="detail-box" key={itemDetail._id}>
 				<div className="detail-box-left">
 					<div className="detail-box-left-top">
 						<h1 className="detail-box-left_title">{itemDetail.title}</h1>
@@ -113,10 +109,7 @@ export const ItemDetail = ({ modalD, setModalD }) => {
 							message
 						</span>
 						<Link to="/">
-							<span
-								onClick={toggleModalD}
-								className="detail-box-right-bottom_button detail-box-right-bottom_button--back"
-							>
+							<span className="detail-box-right-bottom_button detail-box-right-bottom_button--back">
 								go back to list
 							</span>
 						</Link>

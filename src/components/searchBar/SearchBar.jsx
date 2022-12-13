@@ -139,10 +139,10 @@ export const SearchBar = ({ posts, setPosts, setFilter }) => {
 					<button className="search-button search-button--cancel">
 						Cancel
 					</button>
-					<Link to="/result">
+					<Link to="/result" className="search-button search-button--search">
 						<button
 							onClick={search}
-							className="search-button search-button--search"
+							className=" search-button--search search-button--search-text"
 						>
 							Search
 						</button>

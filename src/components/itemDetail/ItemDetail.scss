@@ -1,10 +1,17 @@
 @use "../../styles/partials/index" as *;
 @use "../../styles/partials/breakpoints" as breakpoints;
+.detail-all {
+	background: #f1f1f1;
+	height: 100vh;
+}
 
 .detail-box {
 	display: flex;
 	flex-direction: column;
-	padding: 1rem 2rem;
+	padding: 2rem 2rem;
+	margin: 1rem 2rem;
+	background-color: white;
+	overflow-y: scroll;
 
 	@include breakpoints.medium {
 		flex-direction: row;
@@ -41,15 +48,18 @@
 				width: 35vw;
 			}
 			@include breakpoints.large {
-				width: 90vw;
+				width: 45vw;
 			}
 		}
 
 		&-icons {
 			padding-bottom: 1rem;
 			display: flex;
-			flex-direction: column;
+			flex-direction: row;
 
+			@include breakpoints.medium {
+				flex-direction: column;
+			}
 			@include breakpoints.large {
 				flex-direction: row;
 			}
@@ -90,7 +100,9 @@
 
 		@include breakpoints.medium {
 			padding-left: 2rem;
-			margin-top: 8rem;
+		}
+		@include breakpoints.large {
+			margin-top: 9rem;
 		}
 
 		&-top-top {
@@ -126,6 +138,11 @@
 			@include breakpoints.medium {
 				font-size: 1.5rem;
 				line-height: 2rem;
+			}
+			@include breakpoints.large {
+				font-size: 1.7rem;
+				line-height: 2.5rem;
+				margin-bottom: 6rem;
 			}
 		}
 

@@ -81,6 +81,11 @@
 		&--search {
 			color: $color-secondary-light;
 			background-color: $color-primary-green;
+			text-align: center;
+
+			&-text {
+				border: none;
+			}
 		}
 	}
 
