@@ -6,12 +6,10 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Bathroom, Bed } from "@mui/icons-material";
-import { Header } from "../../components/header/Header";
-import { Footer } from "../../components/footer/Footer";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:8080";
 
-export const ItemDetail = () => {
+export const ItemDetail = ({ modalD, setModalD }) => {
 	const params = useParams();
 	const [postId, setPostId] = useState("");
 	const [itemDetail, setItemDetail] = useState([]);
@@ -45,6 +43,10 @@ export const ItemDetail = () => {
 	// 	return setImg(imgs);
 	// }
 
+	const toggleModalD = () => {
+		setModalD(!modalD);
+	};
+
 	// if (modalD) {
 	// 	document.body.classList.add("active-modal");
 	// } else {
@@ -52,67 +54,75 @@ export const ItemDetail = () => {
 	// }
 
 	return (
-		<div className="detail-all">
-			<Header />
-			<div className="detail-box" key={itemDetail._id}>
-				<div className="detail-box-left">
-					<div className="detail-box-left-top">
-						<h1 className="detail-box-left_title">{itemDetail.title}</h1>
-						<div className="detail-box-left-icons">
-							<div className="detail-box-left-left-box">
-								<span className="detail-box-left-icon">
-									<span className="detail-box-left-num">
-										{itemDetail.bedroom}
+		<div className="detail-box" key={itemDetail._id}>
+			<div className="modal">
+				<div className="overlay" onClick={toggleModalD}></div>
+				<div className="detail-box detail modal-content" key={itemDetail._id}>
+					<div className="detail-box-left">
+						<div className="detail-box-left-top">
+							<h1 className="detail-box-left_title">{itemDetail.title}</h1>
+							<div className="detail-box-left-icons">
+								<div className="detail-box-left-left-box">
+									<span className="detail-box-left-icon">
+										<span className="detail-box-left-num">
+											{itemDetail.bedroom}
+										</span>
+										<Bed
+											fontSize="large"
+											className="detail-box-left-icon-icon"
+										/>
 									</span>
-									<Bed fontSize="large" className="detail-box-left-icon-icon" />
-								</span>
-								<span className="detail-box-left-icon">
-									<span className="detail-box-left-num">
-										{itemDetail.bathroom}
+									<span className="detail-box-left-icon">
+										<span className="detail-box-left-num">
+											{itemDetail.bathroom}
+										</span>
+										<Bathroom
+											fontSize="large"
+											className="detail-box-left-icon-icon"
+										/>
 									</span>
-									<Bathroom
-										fontSize="large"
-										className="detail-box-left-icon-icon"
-									/>
-								</span>
-							</div>
-							<div className="detail-box-left-right-box">
-								<span className="detail-box-left-icon detail-box-left-icon--bottom">
-									<span className="detail-box-left-num">Move in Avail</span>
-									<span className=" detail-box-left-num detail-box-left-num--bold">
-										{itemDetail.calender}
+								</div>
+								<div className="detail-box-left-right-box">
+									<span className="detail-box-left-icon detail-box-left-icon--bottom">
+										<span className="detail-box-left-num">Move in Avail</span>
+										<span className=" detail-box-left-num detail-box-left-num--bold">
+											{itemDetail.calender}
+										</span>
 									</span>
-								</span>
+								</div>
 							</div>
 						</div>
+						<img
+							className="detail-box-left_head-img"
+							src={itemDetail.img}
+							alt="apt"
+						/>
 					</div>
-					<img
-						className="detail-box-left_head-img"
-						src={itemDetail.img}
-						alt="apt"
-					/>
-				</div>
-				<div className="detail-box-right">
-					<div className="detail-box-right-top">
-						<div className="detail-box-right-top-top">
-							<img
-								className="detail-box-right-img"
-								src={profileImg}
-								alt="profile"
-							/>
-							<h2 className="detail-box-right_username">{user.username}</h2>
+					<div className="detail-box-right">
+						<div className="detail-box-right-top">
+							<div className="detail-box-right-top-top">
+								<img
+									className="detail-box-right-img"
+									src={profileImg}
+									alt="profile"
+								/>
+								<h2 className="detail-box-right_username">{user.username}</h2>
+							</div>
+							<p className="detail-box-right_desc">{itemDetail.desc}</p>
 						</div>
-						<p className="detail-box-right_desc">{itemDetail.desc}</p>
-					</div>
-					<div className="detail-box-right-bottom">
-						<span className="detail-box-right-bottom_button detail-box-right-bottom_button--message">
-							message
-						</span>
-						<Link to="/">
-							<span className="detail-box-right-bottom_button detail-box-right-bottom_button--back">
-								go back to list
+						<div className="detail-box-right-bottom">
+							<span className="detail-box-right-bottom_button detail-box-right-bottom_button--message">
+								message
 							</span>
-						</Link>
+							<Link to="/">
+								<span
+									onClick={toggleModalD}
+									className="detail-box-right-bottom_button detail-box-right-bottom_button--back"
+								>
+									go back to list
+								</span>
+							</Link>
+						</div>
 					</div>
 				</div>
 			</div>

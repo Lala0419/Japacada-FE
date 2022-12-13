@@ -108,6 +108,8 @@
 		line-height: 1.25rem;
 		font-weight: 500;
 		color: rgb(107 114 128);
+		overflow-y: scroll;
+		height: 10rem;
 
 		@include breakpoints.medium {
 			@include tablet-desk-text-body;
