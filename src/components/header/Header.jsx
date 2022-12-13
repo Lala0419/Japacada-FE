@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import "../modal/Modal.scss";
 
-export const Header = ({ modal, setModal }) => {
+export const Header = ({ modal, setModal, modalp, setModalp }) => {
 	// const router = useRouter();
 
 	const toggleModal = () => {
@@ -13,6 +13,16 @@ export const Header = ({ modal, setModal }) => {
 	};
 
 	if (modal) {
+		document.body.classList.add("active-modal");
+	} else {
+		document.body.classList.remove("active-modal");
+	}
+
+	const toggleModalp = () => {
+		setModalp(!modalp);
+	};
+
+	if (modalp) {
 		document.body.classList.add("active-modal");
 	} else {
 		document.body.classList.remove("active-modal");
@@ -36,12 +46,13 @@ export const Header = ({ modal, setModal }) => {
 				</p>
 				{/* </Link> */}
 				<Public fontSize="large" className="header-right_public-icon" />
-				<Link to="/profile/:username">
-					<div className="header-right_icons ">
-						<Menu className="header-right_icon" />
-						<AccountCircle className="header-right_icon" />
-					</div>
-				</Link>
+				{/* <Link to="/profile/:username"> */}
+
+				<div className="header-right_icons" onClick={toggleModalp}>
+					<Menu className="header-right_icon" />
+					<AccountCircle className="header-right_icon" />
+				</div>
+				{/* </Link> */}
 			</div>
 		</header>
 	);

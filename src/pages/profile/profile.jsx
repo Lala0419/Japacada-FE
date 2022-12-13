@@ -2,8 +2,19 @@ import React from "react";
 import { Link } from "react-router-dom";
 import UserImg from "../../assets/person/10.jpeg";
 import "./Profile.scss";
+import "../../components/modal/Modal.scss";
 
-export const Profile = () => {
+export const Profile = ({ modalp, setModalp }) => {
+	const toggleModalp = () => {
+		setModalp(!modalp);
+	};
+
+	if (modalp) {
+		document.body.classList.add("active-modal");
+	} else {
+		document.body.classList.remove("active-modal");
+	}
+
 	return (
 		<>
 			<div className="profile">
@@ -25,9 +36,11 @@ export const Profile = () => {
 						</p>
 					</div>
 				</div>
-				<Link to="/">
-					<span className="profile-button">go back to list</span>
-				</Link>
+				{/* <Link to="/"> */}
+				<span className="profile-button" onClick={toggleModalp}>
+					go back to list
+				</span>
+				{/* </Link> */}
 			</div>
 		</>
 	);

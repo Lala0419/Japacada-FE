@@ -47,9 +47,14 @@ export const Home = ({ setFilter }) => {
 		<>
 			{modal && <AddPost modal={modal} setModal={setModal} />}
 
-			{modalp && <Profile modal={modalp} setModal={setModalp} />}
+			{modalp && <Profile modalp={modalp} setModalp={setModalp} />}
 
-			<Header modal={modal} setModal={setModal} />
+			<Header
+				modal={modal}
+				setModal={setModal}
+				modalp={modalp}
+				setModalp={setModalp}
+			/>
 			<div className="main">
 				<div className="search-icon" onClick={handleSearchBar}>
 					<FilterAltRounded fontSize="large" />
