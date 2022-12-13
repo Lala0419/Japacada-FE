@@ -11,20 +11,17 @@ import { CalendarViewMonth, CompassCalibration } from "@mui/icons-material";
 import AsyncSelect from "react-select/async";
 import { Calendar } from "react-date-range";
 import { format } from "date-fns";
+import "../modal/Modal.scss";
 
-export const AddPost = () => {
+export const AddPost = ({ modal, setModal }) => {
 	const [title, setTitle] = useState("");
 	const [desc, setDesc] = useState("");
 	const [bedroom, setBedroom] = useState("");
 	const [bathroom, setBathroom] = useState("");
 	const [price, setPrice] = useState("");
-	const [calender, setCalender] = useState("");
-	const [location, setLocation] = useState("");
 	const [img, setImg] = useState("");
-	const [post, setPost] = useState(null);
 	const [hasErrorMessage, setHasErrorMessage] = useState(false);
 	const [selectedOption, setSelectedOption] = useState(null);
-	const [isLocationClicked, setIsLocationClicked] = useState(false);
 	const [isCalenderIconClicked, setIsCalenderIconClicked] = useState(false);
 	const [date, setDate] = useState(new Date());
 
@@ -40,6 +37,16 @@ export const AddPost = () => {
 		setDate(date);
 		console.log("date", date);
 	};
+
+	const toggleModal = () => {
+		setModal(!modal);
+	};
+
+	if (modal) {
+		document.body.classList.add("active-modal");
+	} else {
+		document.body.classList.remove("active-modal");
+	}
 
 	const formattedDate = format(new Date(date), "dd MMMM yyyy");
 	// console.log(formattedDate);
@@ -110,7 +117,7 @@ export const AddPost = () => {
 				.then((response) => {
 					setPosts(posts, response.data);
 				});
-			navigate("/");
+			toggleModal();
 		}
 	};
 
@@ -119,8 +126,8 @@ export const AddPost = () => {
 	});
 
 	return (
-		<>
-			<section className="upload">
+		<div className="overlay">
+			<section className="upload modal-content">
 				<div className="upload__top">
 					<h1 className="upload__top-title">New Post</h1>
 				</div>
@@ -145,7 +152,7 @@ export const AddPost = () => {
 								}}
 							>
 								{({ onClick }) => (
-									<button onClick={onClick}>Upload a file...</button>
+									<button onClick={onClick}>Upload a image...</button>
 								)}
 							</UploadButton>
 						</div>
@@ -301,7 +308,7 @@ export const AddPost = () => {
 									/>
 								</button>
 
-								<h2 className="upload__bottom-cancel">
+								<h2 className="upload__bottom-cancel" onClick={toggleModal}>
 									<Link to="/home" className="upload__bottom-cancel-link">
 										CANCEL
 									</Link>
@@ -311,6 +318,6 @@ export const AddPost = () => {
 					</div>
 				</div>
 			</section>
-		</>
+		</div>
 	);
 };

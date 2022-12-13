@@ -2,9 +2,21 @@ import { AccountCircle, Menu, Public } from "@mui/icons-material";
 import "./Header.scss";
 import HeaderIcon from "../../assets/person/1.jpeg";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import "../modal/Modal.scss";
 
-export const Header = () => {
+export const Header = ({ modal, setModal }) => {
 	// const router = useRouter();
+
+	const toggleModal = () => {
+		setModal(!modal);
+	};
+
+	if (modal) {
+		document.body.classList.add("active-modal");
+	} else {
+		document.body.classList.remove("active-modal");
+	}
 
 	return (
 		<header className="header">
@@ -18,9 +30,11 @@ export const Header = () => {
 			</div>
 			{/* right */}
 			<div className="header-right">
-				<Link to="/newpost">
-					<p className="header-right_text">Post</p>
-				</Link>
+				{/* <Link to="/newpost"> */}
+				<p className="header-right_text" onClick={toggleModal}>
+					Post
+				</p>
+				{/* </Link> */}
 				<Public fontSize="large" className="header-right_public-icon" />
 				<Link to="/profile/:username">
 					<div className="header-right_icons ">
