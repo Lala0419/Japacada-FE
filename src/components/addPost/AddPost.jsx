@@ -9,9 +9,9 @@ import { UploadButton } from "react-uploader";
 import "./AddPost.scss";
 import { CalendarViewMonth, CompassCalibration } from "@mui/icons-material";
 import AsyncSelect from "react-select/async";
+import "../modal/Modal.scss";
 import { Calendar } from "react-date-range";
 import { format } from "date-fns";
-import "../modal/Modal.scss";
 
 export const AddPost = ({ modal, setModal }) => {
 	const [title, setTitle] = useState("");
@@ -126,198 +126,210 @@ export const AddPost = ({ modal, setModal }) => {
 	});
 
 	return (
-		<div className="overlay">
-			<section className="upload modal-content">
-				<div className="upload__top">
-					<h1 className="upload__top-title">New Post</h1>
-				</div>
-				<div className="upload__middle">
-					<div className="upload__middle-img-container">
-						<img
-							src={img ? img : Thumbnail}
-							alt="bycle"
-							className="upload__middle-img"
-						/>
-						<div className="upload__middle-button">
-							<UploadButton
-								uploader={uploader} // Required.
-								options={options} // Optional.
-								onComplete={(files) => {
-									// Optional.
-									if (files.length === 0) {
-										console.log("No files selected.");
-									} else {
-										setImg(files[0].fileUrl);
-									}
-								}}
-							>
-								{({ onClick }) => (
-									<button onClick={onClick}>Upload a image...</button>
+		<div className="modal">
+			<div className="overlay"></div>
+			<div className="modal-content">
+				<section className="upload">
+					<div className="upload__top">
+						<h1 className="upload__top-title">New Post</h1>
+					</div>
+					<div className="upload__middle">
+						<div className="upload__middle-img-container">
+							<img
+								src={img ? img : Thumbnail}
+								alt="bycle"
+								className="upload__middle-img"
+							/>
+							<div className="upload__middle-button">
+								<UploadButton
+									uploader={uploader} // Required.
+									options={options} // Optional.
+									onComplete={(files) => {
+										// Optional.
+										if (files.length === 0) {
+											console.log("No files selected.");
+										} else {
+											setImg(files[0].fileUrl);
+										}
+									}}
+								>
+									{({ onClick }) => (
+										<button onClick={onClick}>Upload a image...</button>
+									)}
+								</UploadButton>
+							</div>
+						</div>
+						<div className="upload__middle-disc-box">
+							<form onSubmit={handleSubmit} className="upload__middle-form">
+								<div className="upload__middle-list-container">
+									<div className="upload__middle-list">
+										<label htmlFor="name" className="upload__middle-form-label">
+											title your post
+										</label>
+										<input
+											type="text"
+											placeholder="Add a title to your post"
+											className="upload__middle-form-input"
+											id="name"
+											value={title}
+											onChange={(e) => setTitle(e.target.value)}
+										/>
+									</div>
+									<div className="upload__middle-list">
+										<label htmlFor="name" className="upload__middle-form-label">
+											price
+										</label>
+										<input
+											type="text"
+											placeholder="Add a price"
+											className="upload__middle-form-input"
+											id="price"
+											value={price}
+											onChange={(e) => setPrice(e.target.value)}
+										/>
+									</div>
+									<div className="upload__middle-list">
+										<label htmlFor="name" className="upload__middle-form-label">
+											bedroom(s)
+										</label>
+										<input
+											type="text"
+											placeholder="Add a # of bedroom(s)"
+											className="upload__middle-form-input"
+											id="bedroom"
+											value={bedroom}
+											onChange={(e) => setBedroom(e.target.value)}
+										/>
+									</div>
+									<div className="upload__middle-list">
+										<label htmlFor="name" className="upload__middle-form-label">
+											bathroom(s)
+										</label>
+										<input
+											type="text"
+											placeholder="Add a # of bathroom(s)"
+											className="upload__middle-form-input"
+											id="bathroom"
+											value={bathroom}
+											onChange={(e) => setBathroom(e.target.value)}
+										/>
+									</div>
+									<div className="upload__location-calender-box">
+										<div className="upload__middle-list upload__location-box">
+											<label
+												htmlFor="name"
+												className="upload__middle-form-label"
+											>
+												location
+											</label>
+											{/* <input
+type="text"
+placeholder="pick a location"
+className="upload__middle-form-input"
+id="location"
+value={location}
+onChange={(e) => setLocation(e.target.value)}
+/> */}
+											{/* <div
+onClick={handleLocation}
+className="search-item-box_icons search-item-box_icons--location"
+>
+<CompassCalibration
+    fontSize="large"
+    className="search-item-box_icons-icon search-item-box_icons-icon--location"
+/>
+</div> */}
+
+											<div className="upload-location">
+												<AsyncSelect
+													defaultValue={selectedOption}
+													onChange={handleOption}
+													loadOptions={loadOptions}
+													defaultOptions
+												/>
+											</div>
+										</div>
+										<div className="upload__middle-list upload__calender-box">
+											<label
+												htmlFor="name"
+												className="upload__middle-form-label"
+											>
+												move in avail date
+											</label>
+											<div className="search-item-box_icons search-item-box_icons--calender">
+												<CalendarViewMonth
+													color="white"
+													fontSize="large"
+													onClick={handleCalender}
+													className="search-item-box_icons-icon"
+												/>
+											</div>
+
+											{/* <input
+type="text"
+placeholder="starting available date"
+className="upload__middle-form-input"
+id="calender"
+value={calender}
+onChange={(e) => setCalender(e.target.value)}
+/> */}
+										</div>
+									</div>
+									{isCalenderIconClicked && (
+										<div className="search-calender">
+											<Calendar
+												date={date}
+												minDate={new Date()}
+												onChange={handleSelect}
+												dateDisplayFormat={date}
+											/>
+										</div>
+									)}
+									<div className="upload__middle-list">
+										<label
+											htmlFor="comment"
+											className="upload__middle-form-label"
+										>
+											description
+										</label>
+										<textarea
+											id="desc"
+											name="desc"
+											placeholder="Add a description to your post"
+											className="upload__middle-form-input upload__middle-form-input--comment"
+											minLength="5"
+											value={desc}
+											onChange={(e) => setDesc(e.target.value)}
+										></textarea>
+									</div>
+								</div>
+								{hasErrorMessage && (
+									<p className="text__error">This field can not be empty!</p>
 								)}
-							</UploadButton>
+								<div className="upload__bottom">
+									<button
+										id="comment__button"
+										className="upload__bottom-button"
+									>
+										PUBLISH
+										<img
+											className="upload__bottom-publish"
+											src={Publish}
+											alt="publish"
+										/>
+									</button>
+
+									<h2 className="upload__bottom-cancel" onClick={toggleModal}>
+										<Link to="/home" className="upload__bottom-cancel-link">
+											CANCEL
+										</Link>
+									</h2>
+								</div>
+							</form>
 						</div>
 					</div>
-					<div className="upload__middle-disc-box">
-						<form onSubmit={handleSubmit} className="upload__middle-form">
-							<div className="upload__middle-list-container">
-								<div className="upload__middle-list">
-									<label htmlFor="name" className="upload__middle-form-label">
-										title your post
-									</label>
-									<input
-										type="text"
-										placeholder="Add a title to your post"
-										className="upload__middle-form-input"
-										id="name"
-										value={title}
-										onChange={(e) => setTitle(e.target.value)}
-									/>
-								</div>
-								<div className="upload__middle-list">
-									<label htmlFor="name" className="upload__middle-form-label">
-										price
-									</label>
-									<input
-										type="text"
-										placeholder="Add a price"
-										className="upload__middle-form-input"
-										id="price"
-										value={price}
-										onChange={(e) => setPrice(e.target.value)}
-									/>
-								</div>
-								<div className="upload__middle-list">
-									<label htmlFor="name" className="upload__middle-form-label">
-										bedroom(s)
-									</label>
-									<input
-										type="text"
-										placeholder="Add a # of bedroom(s)"
-										className="upload__middle-form-input"
-										id="bedroom"
-										value={bedroom}
-										onChange={(e) => setBedroom(e.target.value)}
-									/>
-								</div>
-								<div className="upload__middle-list">
-									<label htmlFor="name" className="upload__middle-form-label">
-										bathroom(s)
-									</label>
-									<input
-										type="text"
-										placeholder="Add a # of bathroom(s)"
-										className="upload__middle-form-input"
-										id="bathroom"
-										value={bathroom}
-										onChange={(e) => setBathroom(e.target.value)}
-									/>
-								</div>
-								<div className="upload__location-calender-box">
-									<div className="upload__middle-list upload__location-box">
-										<label htmlFor="name" className="upload__middle-form-label">
-											location
-										</label>
-										{/* <input
-										type="text"
-										placeholder="pick a location"
-										className="upload__middle-form-input"
-										id="location"
-										value={location}
-										onChange={(e) => setLocation(e.target.value)}
-									/> */}
-										{/* <div
-										onClick={handleLocation}
-										className="search-item-box_icons search-item-box_icons--location"
-									>
-										<CompassCalibration
-											fontSize="large"
-											className="search-item-box_icons-icon search-item-box_icons-icon--location"
-										/>
-									</div> */}
-
-										<div className="upload-location">
-											<AsyncSelect
-												defaultValue={selectedOption}
-												onChange={handleOption}
-												loadOptions={loadOptions}
-												defaultOptions
-											/>
-										</div>
-									</div>
-									<div className="upload__middle-list upload__calender-box">
-										<label htmlFor="name" className="upload__middle-form-label">
-											move in avail date
-										</label>
-										<div className="search-item-box_icons search-item-box_icons--calender">
-											<CalendarViewMonth
-												color="white"
-												fontSize="large"
-												onClick={handleCalender}
-												className="search-item-box_icons-icon"
-											/>
-										</div>
-
-										{/* <input
-										type="text"
-										placeholder="starting available date"
-										className="upload__middle-form-input"
-										id="calender"
-										value={calender}
-										onChange={(e) => setCalender(e.target.value)}
-									/> */}
-									</div>
-								</div>
-								{isCalenderIconClicked && (
-									<div className="search-calender">
-										<Calendar
-											date={date}
-											minDate={new Date()}
-											onChange={handleSelect}
-											dateDisplayFormat={date}
-										/>
-									</div>
-								)}
-								<div className="upload__middle-list">
-									<label
-										htmlFor="comment"
-										className="upload__middle-form-label"
-									>
-										description
-									</label>
-									<textarea
-										id="desc"
-										name="desc"
-										placeholder="Add a description to your post"
-										className="upload__middle-form-input upload__middle-form-input--comment"
-										minLength="5"
-										value={desc}
-										onChange={(e) => setDesc(e.target.value)}
-									></textarea>
-								</div>
-							</div>
-							{hasErrorMessage && (
-								<p className="text__error">This field can not be empty!</p>
-							)}
-							<div className="upload__bottom">
-								<button id="comment__button" className="upload__bottom-button">
-									PUBLISH
-									<img
-										className="upload__bottom-publish"
-										src={Publish}
-										alt="publish"
-									/>
-								</button>
-
-								<h2 className="upload__bottom-cancel" onClick={toggleModal}>
-									<Link to="/home" className="upload__bottom-cancel-link">
-										CANCEL
-									</Link>
-								</h2>
-							</div>
-						</form>
-					</div>
-				</div>
-			</section>
+				</section>
+			</div>
 		</div>
 	);
 };
