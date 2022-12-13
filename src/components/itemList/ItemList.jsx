@@ -5,13 +5,13 @@ import { ItemDetail } from "../itemDetail/ItemDetail";
 import "../modal/Modal.scss";
 
 export const ItemList = ({ posts }) => {
-	const [modal, setModal] = useState(false);
+	const [modalD, setModalD] = useState(false);
 
-	const toggleModal = () => {
-		setModal(!modal);
+	const toggleModalD = () => {
+		setModalD(!modalD);
 	};
 
-	if (modal) {
+	if (modalD) {
 		document.body.classList.add("active-modal");
 	} else {
 		document.body.classList.remove("active-modal");
@@ -27,7 +27,7 @@ export const ItemList = ({ posts }) => {
 
 					return (
 						// <Link to={`/${post._id}`} key={post._id}>
-						<div className="item-list" key={post._id} onClick={toggleModal}>
+						<div className="item-list" key={post._id} onClick={toggleModalD}>
 							<div
 								style={{ transition: "all .5s ease" }}
 								className="item-list-box"
@@ -59,7 +59,7 @@ export const ItemList = ({ posts }) => {
 						</div>
 					);
 				})}
-			{modal && <ItemDetail />}
+			{modalD && <ItemDetail modalD={modalD} setModalD={setModalD} />}
 		</>
 	);
 };

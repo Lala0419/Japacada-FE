@@ -8,6 +8,7 @@
 
 	@include breakpoints.medium {
 		flex-direction: row;
+		justify-content: center;
 	}
 
 	&-left,
@@ -19,6 +20,9 @@
 
 	&-left {
 		@include breakpoints.medium {
+			width: 35vw;
+		}
+		@include breakpoints.large {
 			width: 45vw;
 		}
 		&_title {
@@ -26,15 +30,18 @@
 			margin: 2rem 0;
 
 			@include breakpoints.medium {
-				font-size: 3rem;
+				font-size: 2.5rem;
 			}
 		}
 
 		&_head-img {
 			object-fit: contain;
-			width: 90vw;
+			width: 75vw;
 			@include breakpoints.medium {
-				width: 45vw;
+				width: 35vw;
+			}
+			@include breakpoints.large {
+				width: 90vw;
 			}
 		}
 
@@ -62,8 +69,12 @@
 		}
 
 		&-num {
-			font-size: 2rem;
+			font-size: 1.5rem;
 			margin-right: 1rem;
+
+			@include breakpoints.large {
+				font-size: 2rem;
+			}
 
 			&--bold {
 				font-weight: 700;
@@ -89,8 +100,13 @@
 		}
 
 		&-img {
-			width: 5rem;
-			height: 5rem;
+			width: 3rem;
+			height: 3rem;
+
+			@include breakpoints.medium {
+				width: 5rem;
+				height: 5rem;
+			}
 		}
 
 		&_username {
@@ -103,9 +119,14 @@
 		}
 
 		&_desc {
-			font-size: 1.5rem;
-			line-height: 2rem;
+			font-size: 1.2rem;
+			line-height: 1.3rem;
 			margin-bottom: 2rem;
+
+			@include breakpoints.medium {
+				font-size: 1.5rem;
+				line-height: 2rem;
+			}
 		}
 
 		&-bottom {
