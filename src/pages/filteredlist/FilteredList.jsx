@@ -70,7 +70,7 @@ export const FilteredList = ({
 					<h1 className="fList-location">No post was found :( </h1>
 				</div>
 			)}
-			<ItemList posts={posts} />
+			<ItemList posts={posts} modalp={modalp} setModalp={setModalp} />
 			<Link to="/">
 				<div className="fList-button">
 					<span className="detail-box-right-bottom_button detail-box-right-bottom_button--back ">

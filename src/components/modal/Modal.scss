@@ -10,6 +10,10 @@ body.active-modal {
 	background: rgba(49, 49, 49, 0.8);
 }
 
+.modal-profile {
+	z-index: 1000;
+}
+
 .modal,
 .overlay {
 	width: 100vw;

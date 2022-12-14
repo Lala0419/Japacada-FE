@@ -25,12 +25,12 @@ export const SignUp = () => {
 						placeholder="Eメール"
 					/>
 					<input
-						type="text"
+						type="password"
 						className="login-right-input"
 						placeholder="パスワード"
 					/>
 					<input
-						type="text"
+						type="password"
 						className="login-right-input"
 						placeholder="確認用パスワード"
 					/>

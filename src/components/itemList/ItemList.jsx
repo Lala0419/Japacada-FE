@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { ItemDetail } from "../itemDetail/ItemDetail";
 import "../modal/Modal.scss";
 
-export const ItemList = ({ posts }) => {
+export const ItemList = ({ posts, modalp, setModalp }) => {
 	const [modalD, setModalD] = useState(false);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [selectedId, setSelectedId] = useState(undefined);
@@ -77,6 +77,8 @@ export const ItemList = ({ posts }) => {
 				<ItemDetail
 					modalD={modalD}
 					setModalD={setModalD}
+					modalp={modalp}
+					setModalp={setModalp}
 					testID={selectedId}
 					onClose={() => {
 						setIsModalOpen(false);

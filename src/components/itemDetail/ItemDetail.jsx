@@ -9,7 +9,14 @@ import { Bathroom, Bed } from "@mui/icons-material";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:8080";
 
-export const ItemDetail = ({ modalD, setModalD, testID, onClose }) => {
+export const ItemDetail = ({
+	modalD,
+	setModalD,
+	testID,
+	onClose,
+	modalp,
+	setModalp,
+}) => {
 	const params = useParams();
 	const [postId, setPostId] = useState("");
 	const [itemDetail, setItemDetail] = useState([]);
@@ -48,11 +55,15 @@ export const ItemDetail = ({ modalD, setModalD, testID, onClose }) => {
 		onClose();
 	};
 
-	// if (modalD) {
-	// 	document.body.classList.add("active-modal");
-	// } else {
-	// 	document.body.classList.remove("active-modal");
-	// }
+	const toggleModalp = () => {
+		setModalp(!modalp);
+	};
+
+	if (modalp) {
+		document.body.classList.add("active-modal");
+	} else {
+		document.body.classList.remove("active-modal");
+	}
 
 	return (
 		<div className="detail-box" key={itemDetail._id}>
@@ -101,7 +112,7 @@ export const ItemDetail = ({ modalD, setModalD, testID, onClose }) => {
 					</div>
 					<div className="detail-box-right">
 						<div className="detail-box-right-top">
-							<div className="detail-box-right-top-top">
+							<div className="detail-box-right-top-top" onClick={toggleModalp}>
 								<img
 									className="detail-box-right-img"
 									src={profileImg}

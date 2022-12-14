@@ -54,7 +54,7 @@ export const Home = ({ setFilter, modalp, setModalp, toggleModalp }) => {
 				<div className="search-tablet">
 					<SearchBar setFilter={setFilter} posts={posts} setPosts={setPosts} />
 				</div>
-				<ItemList posts={posts} toggleModalp={toggleModalp} />
+				<ItemList posts={posts} modalp={modalp} setModalp={setModalp} />
 			</div>
 			<Footer />
 		</>

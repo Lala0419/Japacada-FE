@@ -22,7 +22,7 @@ export const Login = () => {
 						placeholder="Eメール"
 					/>
 					<input
-						type="text"
+						type="password"
 						className="login-right-input"
 						placeholder="パスワード"
 					/>

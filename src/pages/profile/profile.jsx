@@ -23,7 +23,7 @@ export const Profile = ({ modalp, setModalp, setFilter }) => {
 	// }, []);
 
 	return (
-		<div className="modal">
+		<div className="modal modal-profile">
 			<div className="overlay" onClick={toggleModalp}></div>
 			<div className="profile modal-content">
 				<div className="profile-box">
@@ -39,7 +39,7 @@ export const Profile = ({ modalp, setModalp, setFilter }) => {
 								<p className="profile-userinfo-label">
 									I am currently looking for
 								</p>
-								<h3 className="profile-userinfo-text">A Room</h3>
+								<h3 className="profile-userinfo-text">A female roommate</h3>
 							</div>
 						</div>
 					</div>
