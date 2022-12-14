@@ -9,7 +9,7 @@ import { Bathroom, Bed } from "@mui/icons-material";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:8080";
 
-export const ItemDetail = ({ modalD, setModalD }) => {
+export const ItemDetail = ({ modalD, setModalD, testID, onClose }) => {
 	const params = useParams();
 	const [postId, setPostId] = useState("");
 	const [itemDetail, setItemDetail] = useState([]);
@@ -17,8 +17,8 @@ export const ItemDetail = ({ modalD, setModalD }) => {
 
 	useEffect(() => {
 		const fetchItemDetail = async () => {
-			const { data } = await axios.get(`${BASE_URL}/api/posts/${postId}`);
-			console.log("data", data);
+			const { data } = await axios.get(`${BASE_URL}/api/posts/${testID}`);
+			console.log("fetchItemDetail data", data);
 			setItemDetail(data.post);
 			setUser(data.user);
 		};
@@ -45,6 +45,7 @@ export const ItemDetail = ({ modalD, setModalD }) => {
 
 	const toggleModalD = () => {
 		setModalD(!modalD);
+		onClose();
 	};
 
 	// if (modalD) {
@@ -114,14 +115,13 @@ export const ItemDetail = ({ modalD, setModalD }) => {
 							<span className="detail-box-right-bottom_button detail-box-right-bottom_button--message">
 								message
 							</span>
-							<Link to="/">
-								<span
-									onClick={toggleModalD}
-									className="detail-box-right-bottom_button detail-box-right-bottom_button--back"
-								>
-									go back to list
-								</span>
-							</Link>
+
+							<span
+								onClick={toggleModalD}
+								className="detail-box-right-bottom_button detail-box-right-bottom_button--back"
+							>
+								go back to list
+							</span>
 						</div>
 					</div>
 				</div>

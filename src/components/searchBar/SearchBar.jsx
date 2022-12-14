@@ -57,10 +57,11 @@ export const SearchBar = ({ posts, setPosts, setFilter }) => {
 		console.log(locations);
 		console.log("selectedOption", selectedOption);
 
+		// ['vancouver', 'richmond]
 		setFilter({
 			bedroom: noOfBeds,
 			bathroom: noOfBaths,
-			location: locations,
+			location: locations || "",
 			calender: date.toISOString(),
 		});
 
@@ -71,7 +72,7 @@ export const SearchBar = ({ posts, setPosts, setFilter }) => {
 			return post.bedroom === noOfBeds && post.bathroom === noOfBaths;
 		});
 
-		//TODO add func for location and calender
+		// TODO add func for location and calender
 
 		setPosts(searchResult);
 		setIsCalenderIconClicked(false);
@@ -139,10 +140,10 @@ export const SearchBar = ({ posts, setPosts, setFilter }) => {
 					<button className="search-button search-button--cancel">
 						Cancel
 					</button>
-					<Link to="/result" className="search-button search-button--search">
+					<Link to="/result" className="search-button--search-link">
 						<button
 							onClick={search}
-							className=" search-button--search search-button--search-text"
+							className="search-button search-button--search search-button--search-text"
 						>
 							Search
 						</button>

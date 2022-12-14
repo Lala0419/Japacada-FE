@@ -33,6 +33,7 @@
 			margin: 0.5rem 0;
 			align-items: center;
 			margin-left: 1rem;
+			cursor: pointer;
 
 			&--location,
 			&--calender {
@@ -57,11 +58,14 @@
 				margin-right: 0.5rem;
 				border-radius: 1rem;
 				background-color: rgb(243 244 246);
+				cursor: pointer;
 			}
 		}
 	}
 
 	&-button {
+		cursor: pointer;
+
 		&-box {
 			display: flex;
 			padding-top: 1rem;
@@ -82,9 +86,11 @@
 			color: $color-secondary-light;
 			background-color: $color-primary-green;
 			text-align: center;
+			width: 100%;
 
-			&-text {
-				border: none;
+			&-link {
+				flex-grow: 1;
+				display: inline-block;
 			}
 		}
 	}

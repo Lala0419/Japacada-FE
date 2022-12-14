@@ -3,6 +3,10 @@
 
 .item-list {
 	margin: 0 2rem;
+	// min-block-size: 100%;
+	// min-inline-size: 100%;
+	box-sizing: border-box;
+	display: grid;
 
 	&-box {
 		display: flex;
@@ -12,9 +16,34 @@
 		background-color: white;
 		transition: 3s ease-in-out;
 		color: $color-secondary-dark;
-		// background-color: $color-primary-green;
-		border-radius: 20px;
+		border-radius: 10px;
 		margin: 1rem;
+		position: relative;
+
+		&::before {
+			transform: scaleX(0);
+			transform-origin: bottom right;
+		}
+
+		&:hover::before {
+			transform: scaleX(1);
+			transform-origin: bottom left;
+		}
+
+		&::before {
+			content: " ";
+			display: block;
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			inset: 0 0 0 0;
+			background: rgb(54 106 54 / 68%);
+			z-index: -1;
+			transition: transform 0.3s ease;
+			border-radius: 10px;
+		}
 
 		@include breakpoints.medium {
 			flex-direction: row;
@@ -24,6 +53,7 @@
 			transform: scale(1.02);
 			box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1),
 				0 2px 4px -2px rgb(0 0 0 / 0.1);
+			color: $color-primary-light;
 
 			@include breakpoints.medium {
 				margin: 1.25rem;
@@ -107,7 +137,6 @@
 		font-size: 0.85rem;
 		line-height: 1.25rem;
 		font-weight: 500;
-		color: rgb(107 114 128);
 		overflow-y: scroll;
 		height: 10rem;
 

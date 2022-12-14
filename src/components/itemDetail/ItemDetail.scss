@@ -9,13 +9,12 @@
 	display: flex;
 	flex-direction: column;
 	padding: 2rem 2rem;
-	margin: 1rem 2rem;
 	background-color: white;
 	overflow-y: scroll;
 
 	@include breakpoints.medium {
 		flex-direction: row;
-		justify-content: center;
+		justify-content: space-around;
 	}
 
 	&-left,
@@ -34,10 +33,10 @@
 		}
 		&_title {
 			font-size: 2rem;
-			margin: 2rem 0;
+			margin: 2rem 0 1rem;
 
 			@include breakpoints.medium {
-				font-size: 2.5rem;
+				font-size: 2rem;
 			}
 		}
 
@@ -55,7 +54,7 @@
 		&-icons {
 			padding-bottom: 1rem;
 			display: flex;
-			flex-direction: row;
+			flex-direction: column;
 
 			@include breakpoints.medium {
 				flex-direction: column;
@@ -115,7 +114,7 @@
 			width: 3rem;
 			height: 3rem;
 
-			@include breakpoints.medium {
+			@include breakpoints.large {
 				width: 5rem;
 				height: 5rem;
 			}
@@ -125,27 +124,27 @@
 			font-size: 1.5rem;
 			padding: 1rem;
 
-			@include breakpoints.medium {
+			@include breakpoints.large {
 				font-size: 2rem;
 			}
 		}
 
 		&_desc {
 			font-size: 1.2rem;
-			line-height: 1.3rem;
+			line-height: 1.5rem;
 			margin-bottom: 2rem;
 			overflow-y: scroll;
-			height: 40vh;
+			height: 20vh;
 			padding-right: 1.5rem;
 
 			@include breakpoints.medium {
-				font-size: 1.5rem;
 				line-height: 2rem;
 			}
 			@include breakpoints.large {
 				font-size: 1.7rem;
 				line-height: 2.5rem;
 				margin-bottom: 6rem;
+				height: 35vh;
 			}
 		}
 

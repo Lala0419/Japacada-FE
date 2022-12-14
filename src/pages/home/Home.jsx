@@ -12,7 +12,7 @@ import "../../components/modal/Modal.scss";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:8080";
 
-export const Home = ({ setFilter, modalp, setModalp }) => {
+export const Home = ({ setFilter, modalp, setModalp, toggleModalp }) => {
 	const [isSearchClick, setIsSearchClick] = useState(false);
 	const [posts, setPosts] = useState([]);
 
@@ -33,7 +33,11 @@ export const Home = ({ setFilter, modalp, setModalp }) => {
 		<>
 			{modalp && <Profile modalp={modalp} setModalp={setModalp} />}
 
-			<Header modalp={modalp} setModalp={setModalp} />
+			<Header
+				modalp={modalp}
+				setModalp={setModalp}
+				toggleModalp={toggleModalp}
+			/>
 			<div className="main">
 				<div className="search-icon" onClick={handleSearchBar}>
 					<FilterAltRounded fontSize="large" />
@@ -50,7 +54,7 @@ export const Home = ({ setFilter, modalp, setModalp }) => {
 				<div className="search-tablet">
 					<SearchBar setFilter={setFilter} posts={posts} setPosts={setPosts} />
 				</div>
-				<ItemList posts={posts} />
+				<ItemList posts={posts} toggleModalp={toggleModalp} />
 			</div>
 			<Footer />
 		</>

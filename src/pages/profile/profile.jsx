@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 import UserImg from "../../assets/person/nanaya1.jpg";
 import "./Profile.scss";
 import "../../components/modal/Modal.scss";
-import axios from "axios";
+import { Close } from "@mui/icons-material";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:8080";
+// const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:8080";
 
 export const Profile = ({ modalp, setModalp, setFilter }) => {
 	const toggleModalp = () => {
@@ -55,9 +54,10 @@ export const Profile = ({ modalp, setModalp, setFilter }) => {
 							go back to list
 						</span>
 					</div>
+					<div className="profile-X" onClick={toggleModalp}>
+						<Close fontSize="large" />
+					</div>
 				</div>
-				{/* <Link to="/"> */}
-				{/* </Link> */}
 			</div>
 		</div>
 	);

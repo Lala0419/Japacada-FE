@@ -3,6 +3,7 @@
 
 .upload {
 	padding: 1.6rem;
+	position: relative;
 
 	@include breakpoints.medium {
 		padding: 1.6rem 3.6rem;
@@ -23,6 +24,12 @@
 				padding-bottom: 2rem;
 				border-bottom: 1px solid $color-secondary-outline;
 			}
+		}
+
+		&-close {
+			position: absolute;
+			top: 0;
+			right: 20px;
 		}
 	}
 

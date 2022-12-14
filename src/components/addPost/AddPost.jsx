@@ -7,7 +7,7 @@ import axios from "axios";
 import { Uploader } from "uploader";
 import { UploadButton } from "react-uploader";
 import "./AddPost.scss";
-import { CalendarViewMonth, CompassCalibration } from "@mui/icons-material";
+import { CalendarViewMonth, Close } from "@mui/icons-material";
 import AsyncSelect from "react-select/async";
 import { Calendar } from "react-date-range";
 import { format } from "date-fns";
@@ -122,6 +122,9 @@ export const AddPost = () => {
 			<section className="upload">
 				<div className="upload__top">
 					<h1 className="upload__top-title">New Post</h1>
+					<Link to="/">
+						<Close fontSize="large" className="upload__top-close" />
+					</Link>
 				</div>
 				<div className="upload__middle">
 					<div className="upload__middle-img-container">

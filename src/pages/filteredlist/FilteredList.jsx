@@ -10,7 +10,11 @@ import { Profile } from "../profile/Profile";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:8080";
 
-export const FilteredList = ({ filter, modalp, setModalp }) => {
+export const FilteredList = ({
+	filter = { calender: new Date(), location: "vancouver" },
+	modalp,
+	setModalp,
+}) => {
 	const [posts, setPosts] = useState([]);
 	const [result, setResult] = useState(true);
 	const formattedDate = format(new Date(filter.calender), "dd MMMM yyyy");
@@ -21,16 +25,21 @@ export const FilteredList = ({ filter, modalp, setModalp }) => {
 	useEffect(() => {
 		const fetchPosts = async () => {
 			const { data } = await axios.get(`${BASE_URL}/api/posts/timeline/all`);
-			const searchResult = data.filter(
-				(item) =>
-					item.bedroom === filter.bedroom && item.bathroom === filter.bathroom
-			);
+			const searchResult = data.filter((item) => {
+				return (
+					item.bedroom === filter.bedroom &&
+					item.bathroom === filter.bathroom &&
+					item.location.toLowerCase() === filter.location.toLowerCase()
+				);
+			});
 			console.log("searchResult", searchResult);
 
 			setPosts(searchResult);
+
 			if (searchResult.length === 0) {
 				setResult(false);
 			}
+			// setFilter();
 		};
 		fetchPosts();
 	}, []);
@@ -43,15 +52,19 @@ export const FilteredList = ({ filter, modalp, setModalp }) => {
 
 			<Header modalp={modalp} setModalp={setModalp} />
 			{result ? (
-				<dev className="fList">
+				<div className="fList">
 					<section className="fList-box">
 						<p className="fList-text">
 							300+ places for {filter.bedroom} bedroom, {filter.bathroom}{" "}
 							bathroom open from {formattedDate}
 						</p>
-						<h1 className="fList-location">in {filter.location}</h1>
+						<h1 className="fList-location">
+							in{" "}
+							{filter.location.charAt(0).toUpperCase() +
+								filter.location.slice(1)}
+						</h1>
 					</section>
-				</dev>
+				</div>
 			) : (
 				<div className="fList-box">
 					<h1 className="fList-location">No post was found :( </h1>

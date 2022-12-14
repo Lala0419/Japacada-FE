@@ -1,15 +1,24 @@
 import "./ItemList.scss";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ItemDetail } from "../itemDetail/ItemDetail";
 import "../modal/Modal.scss";
 
 export const ItemList = ({ posts }) => {
 	const [modalD, setModalD] = useState(false);
+	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [selectedId, setSelectedId] = useState(undefined);
 
-	const toggleModalD = () => {
+	const toggleModalD = (id) => {
 		setModalD(!modalD);
+		console.log("toggleModalD!!!!!", { id });
+		setIsModalOpen(true);
+		setSelectedId(id);
 	};
+
+	useEffect(() => {
+		console.log({ isModalOpen, selectedId });
+	}, [isModalOpen, selectedId]);
 
 	if (modalD) {
 		document.body.classList.add("active-modal");
@@ -28,7 +37,11 @@ export const ItemList = ({ posts }) => {
 
 					return (
 						// <Link to={`/${post._id}`} key={post._id}>
-						<div className="item-list" key={post._id} onClick={toggleModalD}>
+						<div
+							className="item-list"
+							key={post._id}
+							onClick={() => toggleModalD(post._id)}
+						>
 							<div
 								style={{ transition: "all .5s ease" }}
 								className="item-list-box"
@@ -60,7 +73,17 @@ export const ItemList = ({ posts }) => {
 						// </Link>
 					);
 				})}
-			{modalD && <ItemDetail modalD={modalD} setModalD={setModalD} />}
+			{isModalOpen && (
+				<ItemDetail
+					modalD={modalD}
+					setModalD={setModalD}
+					testID={selectedId}
+					onClose={() => {
+						setIsModalOpen(false);
+						setSelectedId(undefined);
+					}}
+				/>
+			)}
 		</>
 	);
 };
