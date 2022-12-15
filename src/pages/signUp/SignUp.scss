@@ -94,7 +94,7 @@
 		&-signup-box {
 			width: 40rem;
 			margin: auto;
-			height: 30rem;
+			height: 70vh;
 			padding: 20px;
 			background-color: aliceblue;
 			border-radius: 20px;
@@ -129,6 +129,13 @@
 			&:hover {
 				border: 2px solid $color-secondary-green;
 			}
+		}
+
+		&-textarea {
+			height: 15rem;
+			resize: none;
+			padding-top: 1rem;
+			font-family: Avenir;
 		}
 
 		&-button {

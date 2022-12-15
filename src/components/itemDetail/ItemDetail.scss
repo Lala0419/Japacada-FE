@@ -14,7 +14,7 @@
 
 	@include breakpoints.medium {
 		flex-direction: row;
-		justify-content: space-around;
+		justify-content: space-between;
 	}
 
 	&-left,
@@ -96,6 +96,7 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
+		width: 100%;
 
 		@include breakpoints.medium {
 			padding-left: 2rem;
@@ -108,11 +109,14 @@
 			display: flex;
 			align-items: center;
 			margin-bottom: 1rem;
+			cursor: pointer;
 		}
 
 		&-img {
 			width: 3rem;
 			height: 3rem;
+			object-fit: cover;
+			border-radius: 50%;
 
 			@include breakpoints.large {
 				width: 5rem;

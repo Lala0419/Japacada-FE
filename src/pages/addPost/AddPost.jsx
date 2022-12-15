@@ -94,7 +94,7 @@ export const AddPost = () => {
 
 			axios
 				.post(`http://localhost:8000/api/posts/`, {
-					userId: "6393ceef809300431409fc5e",
+					userId: "638d4012e94cfc5e412b56c2",
 					title,
 					desc,
 					img,

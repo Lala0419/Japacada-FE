@@ -1,10 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./SignUp.scss";
 export const SignUp = () => {
 	return (
 		<div className="login">
 			<div className="login-left">
-				<div className="login-left-inside-box">
+				<div className="login-left-inside-box avatar">
 					<h2 className="login-left-logo">Japanada</h2>
 					<h1 className="login-left-message"></h1>
 					<h2 className="login-left-messagej">ようこそ</h2>
@@ -17,26 +18,44 @@ export const SignUp = () => {
 					<input
 						type="text"
 						className="login-right-input"
-						placeholder="ユーザー名"
+						placeholder="User Name/ユーザー名"
 					/>
 					<input
 						type="text"
 						className="login-right-input"
-						placeholder="Eメール"
+						placeholder="Where do you live?/お住まいは？"
+					/>
+					<input
+						type="text"
+						className="login-right-input"
+						placeholder="You are currently looking for/探し中"
+					/>
+					<input
+						type="text"
+						className="login-right-input"
+						placeholder="Email/Eメール"
+					/>
+					<textarea
+						type="text"
+						className="login-right-input login-right-textarea"
+						placeholder="About yourself"
+					/>
+
+					<input
+						type="password"
+						className="login-right-input"
+						placeholder="password/パスワード"
 					/>
 					<input
 						type="password"
 						className="login-right-input"
-						placeholder="パスワード"
+						placeholder="password/確認用パスワード"
 					/>
-					<input
-						type="password"
-						className="login-right-input"
-						placeholder="確認用パスワード"
-					/>
-					<button className="login-right-button">サインアップ</button>
+					<Link to="/login">
+						<button className="login-right-button">Sign up/サインアップ</button>
+					</Link>
 					<button className="login-right-button login-right-register-button">
-						ログイン
+						Login/ログイン
 					</button>
 				</div>
 			</div>

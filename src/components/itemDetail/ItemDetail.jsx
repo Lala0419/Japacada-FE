@@ -1,5 +1,5 @@
 import React from "react";
-import profileImg from "../../assets/person/1.jpeg";
+import profileImg from "../../assets/person/nanaya1.jpg";
 import "./ItemDetail.scss";
 import { useParams } from "react-router-dom";
 import axios from "axios";
