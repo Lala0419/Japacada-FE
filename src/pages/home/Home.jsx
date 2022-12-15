@@ -6,13 +6,13 @@ import { SearchBar } from "../../components/searchBar/SearchBar";
 import { Header } from "../../components/header/Header";
 import { Footer } from "../../components/footer/Footer";
 import "./Home.scss";
-import { AddPost } from "../../components/addPost/AddPost";
-import { Profile } from "../profile/Profile";
+import { Profile } from "../../components/profile/Profile";
 import "../../components/modal/Modal.scss";
+import { Message } from "../../components/message/Message";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:8080";
 
-export const Home = ({ setFilter, modalp, setModalp, toggleModalp }) => {
+export const Home = ({ setFilter, modalp, setModalp, modalm, setModalm }) => {
 	const [isSearchClick, setIsSearchClick] = useState(false);
 	const [posts, setPosts] = useState([]);
 
@@ -33,11 +33,9 @@ export const Home = ({ setFilter, modalp, setModalp, toggleModalp }) => {
 		<>
 			{modalp && <Profile modalp={modalp} setModalp={setModalp} />}
 
-			<Header
-				modalp={modalp}
-				setModalp={setModalp}
-				toggleModalp={toggleModalp}
-			/>
+			{modalm && <Message modalm={modalm} setModalm={setModalm} />}
+
+			<Header modalp={modalp} setModalp={setModalp} />
 			<div className="main">
 				<div className="search-icon" onClick={handleSearchBar}>
 					<FilterAltRounded fontSize="large" />
@@ -54,7 +52,13 @@ export const Home = ({ setFilter, modalp, setModalp, toggleModalp }) => {
 				<div className="search-tablet">
 					<SearchBar setFilter={setFilter} posts={posts} setPosts={setPosts} />
 				</div>
-				<ItemList posts={posts} modalp={modalp} setModalp={setModalp} />
+				<ItemList
+					posts={posts}
+					modalp={modalp}
+					setModalp={setModalp}
+					modalm={modalm}
+					setModalm={setModalm}
+				/>
 			</div>
 			<Footer />
 		</>

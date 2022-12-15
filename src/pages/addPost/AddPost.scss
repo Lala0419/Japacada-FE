@@ -225,6 +225,16 @@
 		color: $color-secondary-dark;
 		width: 20rem;
 		text-align: start;
+		border: none;
+
+		&-icon {
+			outline: none;
+			@include form-field-border;
+
+			&:focus {
+				@include form-field-border--active;
+			}
+		}
 	}
 
 	&__calender-box {

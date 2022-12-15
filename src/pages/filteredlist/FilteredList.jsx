@@ -6,7 +6,8 @@ import "./FilteredList.scss";
 import { Link } from "react-router-dom";
 import { Header } from "../../components/header/Header";
 import { Footer } from "../../components/footer/Footer";
-import { Profile } from "../profile/Profile";
+import { Profile } from "../../components/profile/Profile";
+import { Message } from "../../components/message/Message";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:8080";
 
@@ -14,6 +15,8 @@ export const FilteredList = ({
 	filter = { calender: new Date(), location: "vancouver" },
 	modalp,
 	setModalp,
+	modalm,
+	setModalm,
 }) => {
 	const [posts, setPosts] = useState([]);
 	const [result, setResult] = useState(true);
@@ -39,7 +42,8 @@ export const FilteredList = ({
 			if (searchResult.length === 0) {
 				setResult(false);
 			}
-			// setFilter();
+
+			console.log("data", data);
 		};
 		fetchPosts();
 	}, []);
@@ -50,13 +54,15 @@ export const FilteredList = ({
 		<div>
 			{modalp && <Profile modalp={modalp} setModalp={setModalp} />}
 
+			{modalm && <Message modalm={modalm} setModalm={setModalm} />}
+
 			<Header modalp={modalp} setModalp={setModalp} />
 			{result ? (
 				<div className="fList">
 					<section className="fList-box">
 						<p className="fList-text">
-							300+ places for {filter.bedroom} bedroom, {filter.bathroom}{" "}
-							bathroom open from {formattedDate}
+							{posts.length} places for {filter.bedroom} bedroom,{" "}
+							{filter.bathroom} bathroom open from {formattedDate}
 						</p>
 						<h1 className="fList-location">
 							in{" "}
@@ -70,7 +76,13 @@ export const FilteredList = ({
 					<h1 className="fList-location">No post was found :( </h1>
 				</div>
 			)}
-			<ItemList posts={posts} modalp={modalp} setModalp={setModalp} />
+			<ItemList
+				posts={posts}
+				modalp={modalp}
+				setModalp={setModalp}
+				modalm={modalm}
+				setModalm={setModalm}
+			/>
 			<Link to="/">
 				<div className="fList-button">
 					<span className="detail-box-right-bottom_button detail-box-right-bottom_button--back ">

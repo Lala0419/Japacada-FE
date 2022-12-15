@@ -31,8 +31,6 @@ export const Header = ({ modalp, setModalp }) => {
 					<p className="header-right_text">Post</p>
 				</Link>
 				<Public fontSize="large" className="header-right_public-icon" />
-				{/* <Link to="/profile/:username"> */}
-
 				<div className="header-right_icons" onClick={toggleModalp}>
 					<Menu className="header-right_icon" />
 					<AccountCircle className="header-right_icon" />

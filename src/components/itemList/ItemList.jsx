@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { ItemDetail } from "../itemDetail/ItemDetail";
 import "../modal/Modal.scss";
 
-export const ItemList = ({ posts, modalp, setModalp }) => {
+export const ItemList = ({ posts, modalp, setModalp, modalm, setModalm }) => {
 	const [modalD, setModalD] = useState(false);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [selectedId, setSelectedId] = useState(undefined);
@@ -36,7 +36,6 @@ export const ItemList = ({ posts, modalp, setModalp }) => {
 					// let result = first30Words.join(" ");
 
 					return (
-						// <Link to={`/${post._id}`} key={post._id}>
 						<div
 							className="item-list"
 							key={post._id}
@@ -70,7 +69,6 @@ export const ItemList = ({ posts, modalp, setModalp }) => {
 								</div>
 							</div>
 						</div>
-						// </Link>
 					);
 				})}
 			{isModalOpen && (
@@ -79,6 +77,8 @@ export const ItemList = ({ posts, modalp, setModalp }) => {
 					setModalD={setModalD}
 					modalp={modalp}
 					setModalp={setModalp}
+					modalm={modalm}
+					setModalm={setModalm}
 					testID={selectedId}
 					onClose={() => {
 						setIsModalOpen(false);

@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import profileImg from "../../assets/person/1.jpeg";
 import "./ItemDetail.scss";
 import { useParams } from "react-router-dom";
@@ -16,6 +15,8 @@ export const ItemDetail = ({
 	onClose,
 	modalp,
 	setModalp,
+	modalm,
+	setModalm,
 }) => {
 	const params = useParams();
 	const [postId, setPostId] = useState("");
@@ -58,12 +59,20 @@ export const ItemDetail = ({
 	const toggleModalp = () => {
 		setModalp(!modalp);
 	};
+	const toggleModalm = () => {
+		setModalm(!modalm);
+	};
 
-	if (modalp) {
-		document.body.classList.add("active-modal");
-	} else {
-		document.body.classList.remove("active-modal");
-	}
+	// if (modalp) {
+	// 	document.body.classList.add("active-modal");
+	// } else {
+	// 	document.body.classList.remove("active-modal");
+	// }
+	// if (modalm) {
+	// 	document.body.classList.add("active-modal");
+	// } else {
+	// 	document.body.classList.remove("active-modal");
+	// }
 
 	return (
 		<div className="detail-box" key={itemDetail._id}>
@@ -123,7 +132,10 @@ export const ItemDetail = ({
 							<p className="detail-box-right_desc">{itemDetail.desc}</p>
 						</div>
 						<div className="detail-box-right-bottom">
-							<span className="detail-box-right-bottom_button detail-box-right-bottom_button--message">
+							<span
+								onClick={toggleModalm}
+								className="detail-box-right-bottom_button detail-box-right-bottom_button--message"
+							>
 								message
 							</span>
 

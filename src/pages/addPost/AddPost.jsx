@@ -11,7 +11,7 @@ import { CalendarViewMonth, Close } from "@mui/icons-material";
 import AsyncSelect from "react-select/async";
 import { Calendar } from "react-date-range";
 import { format } from "date-fns";
-import { Header } from "../header/Header";
+import { Header } from "../../components/header/Header";
 
 export const AddPost = () => {
 	const [title, setTitle] = useState("");
@@ -212,30 +212,13 @@ export const AddPost = () => {
 										<label htmlFor="name" className="upload__middle-form-label">
 											location
 										</label>
-										{/* <input
-type="text"
-placeholder="pick a location"
-className="upload__middle-form-input"
-id="location"
-value={location}
-onChange={(e) => setLocation(e.target.value)}
-/> */}
-										{/* <div
-onClick={handleLocation}
-className="search-item-box_icons search-item-box_icons--location"
->
-<CompassCalibration
-fontSize="large"
-className="search-item-box_icons-icon search-item-box_icons-icon--location"
-/>
-</div> */}
-
 										<div className="upload-location">
 											<AsyncSelect
 												defaultValue={selectedOption}
 												onChange={handleOption}
 												loadOptions={loadOptions}
 												defaultOptions
+												className="upload-location-icon"
 											/>
 										</div>
 									</div>

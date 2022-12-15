@@ -11,7 +11,10 @@
 	}
 
 	&-text {
-		@include mobile-text-subheader-footer;
+		@include mobile-text-section-header;
+		background: #dcdcdc6e;
+		width: fit-content;
+		padding-right: 2rem;
 
 		@include breakpoints.medium {
 			@include tablet-desk-text-subheader;
