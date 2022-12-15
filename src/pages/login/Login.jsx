@@ -6,7 +6,7 @@ export const Login = () => {
 	return (
 		<div className="login">
 			<div className="login-left">
-				<div className="login-left-inside-box">
+				<div className="login-left-inside-box avatar">
 					<h2 className="login-left-logo">Japanada</h2>
 					<h1 className="login-left-message">Welcome back</h1>
 					<h2 className="login-left-messagej">おかえりなさい</h2>
