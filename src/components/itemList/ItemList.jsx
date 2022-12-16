@@ -50,7 +50,7 @@ export const ItemList = ({ posts, modalp, setModalp, modalm, setModalm }) => {
 									className="item-list-box2"
 								>
 									<img
-										src={post.img[0]}
+										src={post.img}
 										alt="post-head-pic"
 										style={{ transition: "all 3s ease" }}
 										className="item-list-box2-img"
