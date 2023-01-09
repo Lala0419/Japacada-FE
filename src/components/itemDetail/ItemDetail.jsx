@@ -34,7 +34,7 @@ export const ItemDetail = ({
 		if (postId !== "") {
 			fetchItemDetail();
 		}
-	}, [postId]);
+	}, [postId, testID]);
 
 	useEffect(() => {
 		params.postId

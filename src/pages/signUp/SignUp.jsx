@@ -7,7 +7,7 @@ export const SignUp = () => {
 			<div className="login-left">
 				<div className="login-left-inside-box avatar">
 					<h2 className="login-left-logo">Japanada</h2>
-					<h1 className="login-left-message"></h1>
+					<div className="login-left-message"></div>
 					<h2 className="login-left-messagej">ようこそ</h2>
 					<p className="login-left-messagesub">第二のHOMEをカナダでも</p>
 				</div>

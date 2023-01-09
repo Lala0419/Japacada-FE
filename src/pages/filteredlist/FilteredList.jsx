@@ -47,7 +47,7 @@ export const FilteredList = ({
 			console.log("data", data);
 		};
 		fetchPosts();
-	}, []);
+	}, ["filter.bathroom", "filter.bedroom", "filter.location"]);
 
 	console.log("result", result);
 
