@@ -93,7 +93,7 @@ export const AddPost = () => {
 			});
 
 			axios
-				.post(`http://localhost:8000/api/posts/`, {
+				.post(`japanada-b-production.up.railway.app/api/posts/`, {
 					userId: "638d4012e94cfc5e412b56c2",
 					title,
 					desc,

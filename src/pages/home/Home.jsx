@@ -10,7 +10,8 @@ import { Profile } from "../../components/profile/Profile";
 import "../../components/modal/Modal.scss";
 import { Message } from "../../components/message/Message";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:8080";
+const BASE_URL =
+	process.env.REACT_APP_BASE_URL || "japanada-b-production.up.railway.app";
 
 export const Home = ({ setFilter, modalp, setModalp, modalm, setModalm }) => {
 	const [isSearchClick, setIsSearchClick] = useState(false);

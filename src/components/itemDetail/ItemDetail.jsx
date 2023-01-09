@@ -6,7 +6,8 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Bathroom, Bed } from "@mui/icons-material";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:8080";
+const BASE_URL =
+	process.env.REACT_APP_BASE_URL || "japanada-b-production.up.railway.app";
 
 export const ItemDetail = ({
 	modalD,
