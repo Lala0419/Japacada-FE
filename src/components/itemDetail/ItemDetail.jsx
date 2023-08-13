@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import { Bathroom, Bed } from "@mui/icons-material";
 
 const BASE_URL =
-	process.env.REACT_APP_BASE_URL || "japanada-b-production.up.railway.app";
+	process.env.REACT_APP_BASE_URL || "https://japanada-backend.onrender.com";
 
 export const ItemDetail = ({
 	modalD,

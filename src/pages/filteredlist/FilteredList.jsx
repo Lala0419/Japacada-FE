@@ -10,7 +10,7 @@ import { Profile } from "../../components/profile/Profile";
 import { Message } from "../../components/message/Message";
 
 const BASE_URL =
-	process.env.REACT_APP_BASE_URL || "japanada-b-production.up.railway.app";
+	process.env.REACT_APP_BASE_URL || "https://japanada-backend.onrender.com";
 
 export const FilteredList = ({
 	filter = { calender: new Date(), location: "vancouver" },

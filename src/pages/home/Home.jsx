@@ -11,7 +11,7 @@ import "../../components/modal/Modal.scss";
 import { Message } from "../../components/message/Message";
 
 const BASE_URL =
-	process.env.REACT_APP_BASE_URL || "japanada-b-production.up.railway.app";
+	process.env.REACT_APP_BASE_URL || "https://japanada-backend.onrender.com";
 
 export const Home = ({ setFilter, modalp, setModalp, modalm, setModalm }) => {
 	const [isSearchClick, setIsSearchClick] = useState(false);
