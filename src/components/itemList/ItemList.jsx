@@ -16,7 +16,7 @@ export const ItemList = ({ posts, modalp, setModalp, modalm, setModalm }) => {
 	};
 
 	useEffect(() => {
-		console.log({ isModalOpen, selectedId });
+		//console.log({ isModalOpen, selectedId });
 	}, [isModalOpen, selectedId]);
 
 	if (modalD) {
